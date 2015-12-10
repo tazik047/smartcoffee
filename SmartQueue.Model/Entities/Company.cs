@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SmartQueue.Model.Entities
 {
-    public class Company
+    public class Company : IBaseEntity
     {
         public long Id { get; set; }
 

@@ -19,5 +19,7 @@ namespace SmartQueue.Model.Repositories
         T Get(long id);
 
         IEnumerable<T> Get(Func<T, bool> predicat);
+
+        long Count();
     }
 }

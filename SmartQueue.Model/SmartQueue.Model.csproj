@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Entities\CoffeeMachine.cs" />
     <Compile Include="Entities\Company.cs" />
+    <Compile Include="Entities\IBaseEntity.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\IUnitOfWork.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Services\ISmartQueueServices.cs" />
     <Compile Include="Services\IUserService.cs" />
   </ItemGroup>
   <ItemGroup />

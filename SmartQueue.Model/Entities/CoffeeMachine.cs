@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SmartQueue.Model.Entities
 {
-    public class CoffeeMachine
+    public class CoffeeMachine : IBaseEntity
     {
         public long Id { get; set; }
 
