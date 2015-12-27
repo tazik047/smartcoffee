@@ -1,0 +1,19 @@
+<resources>
+
+    <style name="AppTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:windowBackground">@color/background_holo_light</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:actionBarStyle">@style/WindowTitleBackground</item>
+        <item name="android:buttonStyle">@style/AppTheme.Button</item>
+    </style>
+
+    <style name="WindowTitleBackground" parent="@android:style/Widget.ActionBar">
+        <item name="android:background">@color/windowTitleBackground</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="android:style/Widget.Button">
+        <item name="android:background">@color/btBackground</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:textColor">@color/btText</item>
+    </style>
+</resources>

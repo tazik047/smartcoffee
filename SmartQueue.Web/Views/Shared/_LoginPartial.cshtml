@@ -1,5 +1,5 @@
 ﻿@using SmartQueue.Authorization.Infrastructure
-@if (User.IsAuthenticated)
+@if (User.Identity.IsAuthenticated)
 {
     using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {

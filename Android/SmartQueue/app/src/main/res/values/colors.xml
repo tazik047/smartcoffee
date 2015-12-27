@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="background_holo_light">#F2F2F2</color>
+    <color name="textColor">#797979</color>
+    <color name="windowTitleBackground">#FFD777</color>
+    <color name="btBackground">#68DFF0</color>
+    <color name="btText">#FFFFFF</color>
+</resources>
