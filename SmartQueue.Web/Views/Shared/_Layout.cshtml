@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using SmartQueue.Authorization.Infrastructure
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -185,7 +186,7 @@
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
 
-                    <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="60"></a></p>
+                    <p class="centered"><a href="profile.html"><img src="@Url.Action("Photo","Account",new{id=User.Identity.GetUser().Id})" class="img-circle" width="60"></a></p>
                     <h5 class="centered">@User.Identity.Name</h5>
 
                     <li class="mt">
@@ -319,41 +320,39 @@
 
         return false;
         });*/
-    /*$(document).ready(function () {
-        $("#date-popover").popover({html: true, trigger: "manual"});
-        $("#date-popover").hide();
-        $("#date-popover").click(function (e) {
-            $(this).hide();
+        /*$(document).ready(function () {
+            $("#date-popover").popover({html: true, trigger: "manual"});
+            $("#date-popover").hide();
+            $("#date-popover").click(function (e) {
+                $(this).hide();
+            });
+
+            $("#my-calendar").zabuto_calendar({
+                action: function () {
+                    return myDateFunction(this.id, false);
+                },
+                action_nav: function () {
+                    return myNavFunction(this.id);
+                },
+                ajax: {
+                    url: "show_data.php?action=1",
+                    modal: true
+                },
+                legend: [
+                    {type: "text", label: "Special event", badge: "00"},
+                    {type: "block", label: "Regular event", }
+                ]
+            });
         });
 
-        $("#my-calendar").zabuto_calendar({
-            action: function () {
-                return myDateFunction(this.id, false);
-            },
-            action_nav: function () {
-                return myNavFunction(this.id);
-            },
-            ajax: {
-                url: "show_data.php?action=1",
-                modal: true
-            },
-            legend: [
-                {type: "text", label: "Special event", badge: "00"},
-                {type: "block", label: "Regular event", }
-            ]
-        });
-    });
 
-
-    function myNavFunction(id) {
-        $("#date-popover").hide();
-        var nav = $("#" + id).data("navigation");
-        var to = $("#" + id).data("to");
-        console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
-    }*/
+        function myNavFunction(id) {
+            $("#date-popover").hide();
+            var nav = $("#" + id).data("navigation");
+            var to = $("#" + id).data("to");
+            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }*/
     </script>
-
     @RenderSection("scripts", required: false)
 </body>
 </html>
-

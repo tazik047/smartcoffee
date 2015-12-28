@@ -6,4 +6,5 @@
     <color name="windowTitleBackground">#FFD777</color>
     <color name="btBackground">#68DFF0</color>
     <color name="btText">#FFFFFF</color>
+    <color name="menu_background">#424a5d</color>
 </resources>

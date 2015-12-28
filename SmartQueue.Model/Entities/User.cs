@@ -18,6 +18,8 @@ namespace SmartQueue.Model.Entities
 
         public bool IsActive { get; set; }
 
+        public string ContentType { get; set; }
+
         public CoffeeMachine FavouriteCoffeeMachine { get; set; }
 
         public Company Company { get; set; }

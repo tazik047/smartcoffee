@@ -21,6 +21,8 @@ namespace SmartQueue.Model.Services
 
         User GetUserOrDefault(string login);
 
+        User GetUserOrDefault(long id);
+
         bool IsBanned(User user);
     }
 }

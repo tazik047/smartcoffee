@@ -4,6 +4,11 @@ package com.smartqueue.zadorozhnii.stanislav.smartqueue.model;
  * Created by Tazik on 27.12.2015.
  */
 public class User {
+
+    public long id;
+
+    public String email;
+
     public String login;
 
     public String password;

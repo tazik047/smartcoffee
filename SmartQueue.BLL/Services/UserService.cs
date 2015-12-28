@@ -48,6 +48,11 @@ namespace SmartQueue.BLL.Services
             return _unitOfWork.UserRepository.Get(login);
         }
 
+        public User GetUserOrDefault(long id)
+        {
+            return _unitOfWork.UserRepository.Get(id);
+        }
+
         public bool IsBanned(User user)
         {
             return !_unitOfWork.UserRepository.Get(user.Id).IsActive;

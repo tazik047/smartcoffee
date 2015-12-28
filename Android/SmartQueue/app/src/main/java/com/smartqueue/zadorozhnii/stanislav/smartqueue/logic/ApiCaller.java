@@ -53,7 +53,7 @@ public class ApiCaller {
     private static String cookie;
     private static DataBaseHelper _db;
     private static String COOKIE_NAME = ".ASPXAUTH";
-    private static String DOMAIN = "192.168.0.147";
+    public static String DOMAIN = "10.23.13.137";
 
     private String getCookie(){
         if(cookie==null){
@@ -70,9 +70,7 @@ public class ApiCaller {
             String mils = userCursor.getString(userCursor.getColumnIndex(DataBaseHelper.COLUMN_EXPIRATION_DATE));
             long l = Long.parseLong(mils);
             calendar.setTimeInMillis(l);
-            formatCalendar(calendar);
             Calendar now = getNow();
-            formatCalendar(now);
             if(calendar.compareTo(now)<=0){
                 //TODO ask again cookies
                 return null;
@@ -91,10 +89,6 @@ public class ApiCaller {
         }
 
         return cookie;
-    }
-
-    private void formatCalendar(Calendar c){
-        Log.d("login", c.getTime().toString());
     }
 
     private Calendar getNow(){
@@ -146,7 +140,9 @@ public class ApiCaller {
         List<BasicNameValuePair> nameValuePairs = new ArrayList<BasicNameValuePair>();
         for (Field f :obj.getClass().getFields()) {
             try {
-                nameValuePairs.add(new BasicNameValuePair(f.getName(), f.get(obj).toString()));
+                if(f.get(obj)!=null) {
+                    nameValuePairs.add(new BasicNameValuePair(f.getName(), f.get(obj).toString()));
+                }
             } catch (IllegalAccessException e) {
                 return null;
             }
@@ -200,7 +196,8 @@ public class ApiCaller {
             }*/
         } catch (Exception e) {
             e.printStackTrace();
-            result = e.getMessage();
+            Log.d("api", e.getMessage());
+            return;
         }
 
         _postExecute.execute(this, client, response);

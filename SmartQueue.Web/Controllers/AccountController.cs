@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using SmartQueue.Authorization.Infrastructure;
 using SmartQueue.Authorization.Interfaces;
 using SmartQueue.Model.Services;
 using SmartQueue.Web.Models;
@@ -53,6 +54,25 @@ namespace SmartQueue.Web.Controllers
         {
             _authorization.LogOut();
             return RedirectToAction("Index", "Home");
+        }
+
+        [AllowAnonymous]
+        public ActionResult Photo(long id)
+        {
+            var user = _smartQueueServices.UserService.GetUserOrDefault(id);
+            string name, contentType;
+            if (string.IsNullOrEmpty(user.ContentType))
+            {
+                contentType = "image/jpeg";
+                name = "default";
+            }
+            else
+            {
+                name = user.Email;
+                contentType = user.ContentType;
+            }
+            var path = Server.MapPath("~/Images/" + name);
+            return File(path, contentType);
         }
     }
 }

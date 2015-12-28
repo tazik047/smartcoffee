@@ -8,6 +8,7 @@ import android.app.LoaderManager.LoaderCallbacks;
 
 import android.content.Context;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -21,7 +22,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
@@ -29,10 +29,10 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.smartqueue.zadorozhnii.stanislav.smartqueue.infrastructure.AccountHelper;
 import com.smartqueue.zadorozhnii.stanislav.smartqueue.logic.ApiCaller;
 import com.smartqueue.zadorozhnii.stanislav.smartqueue.logic.PostExecuteWorker;
 import com.smartqueue.zadorozhnii.stanislav.smartqueue.logic.RequestType;
@@ -55,13 +55,6 @@ import java.util.List;
 public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-    /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
@@ -71,12 +64,16 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private TextView textView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        User user = AccountHelper.getInstance().getCurrentUser();
+        if(user!=null){
+            goToMainActivity();
+        }
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -103,59 +100,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-        textView2 = (TextView)findViewById(R.id.textView2);
-
-        Button mTestButton = (Button) findViewById(R.id.button);
-        mTestButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                testRequest();
-            }
-        });
     }
 
     private void populateAutoComplete() {
         getLoaderManager().initLoader(0, null, this);
     }
-
-    private void testRequest(){
-        (new AsyncTask<Void, Void, Boolean>(){
-
-            @Override
-            protected Boolean doInBackground(Void... params) {
-                ApiCaller caller = new ApiCaller("api/account", RequestType.Get,
-                        new PostExecuteWorker() {
-                            @Override
-                            public void execute(ApiCaller caller, final HttpClient result, final HttpResponse response) {
-                                String text = null;
-                                try {
-                                    if(response.getStatusLine().getStatusCode()==200) {
-                                        text = EntityUtils.toString(response.getEntity());
-                                    }
-                                    else{
-                                        text = Integer.toString(response.getStatusLine().getStatusCode());
-                                    }
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                                final String textToView = text;
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-
-                                        Log.d("login", textToView);
-                                        textView2.setText(textToView);
-                                    }
-                                });
-
-                            }
-                        });
-                caller.execute();
-                return true;
-            }
-        }).execute();
-    }
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -213,6 +162,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
+    }
+
+    private void goToMainActivity(){
+        Intent intent=new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     /**
@@ -349,7 +303,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                                 public void run() {
 
                                     Log.d("login", textToView);
-                                    textView2.setText(textToView);
                                 }
                             });
                         }
@@ -364,7 +317,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             showProgress(false);
 
             if (success) {
-                finish();
+                goToMainActivity();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.setText("");
