@@ -56,6 +56,12 @@ namespace SmartQueue.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
+        public ActionResult Manage()
+        {
+            return View();
+        }
+
         [AllowAnonymous]
         public ActionResult Photo(long id)
         {

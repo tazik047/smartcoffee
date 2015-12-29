@@ -9,5 +9,7 @@ namespace SmartQueue.Model.Services
     public interface ISmartQueueServices
     {
         IUserService UserService { get; }
+
+        IPreferencesService PreferencesService { get; }
     }
 }

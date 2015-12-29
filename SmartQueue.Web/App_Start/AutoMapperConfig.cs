@@ -13,6 +13,13 @@ namespace SmartQueue.Web.App_Start
         public static void RegisterMaps()
         {
             RegisterUserMaps();
+            RegisterPreferencesMaps();
+        }
+
+        private static void RegisterPreferencesMaps()
+        {
+            Mapper.CreateMap<CoffeePreferences, OrderViewModel>().ReverseMap();
+            Mapper.CreateMap<Order, OrderViewModel>().ReverseMap();
         }
 
         private static void RegisterUserMaps()

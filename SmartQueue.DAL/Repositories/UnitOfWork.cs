@@ -19,6 +19,10 @@ namespace SmartQueue.DAL.Repositories
 
         private IUserRepository _userRepository;
 
+        private ICoffeePreferencesRepository _coffeePreferencesRepository;
+
+        private IQueueItemRepository _queueItemRepository;
+
         public UnitOfWork()
         {
             _db = new EfDbContext();
@@ -42,6 +46,20 @@ namespace SmartQueue.DAL.Repositories
         public IUserRepository UserRepository
         {
             get { return _userRepository ?? (_userRepository = new UserRepository(_db)); }
+        }
+
+        public ICoffeePreferencesRepository CoffeePreferencesRepository
+        {
+            get
+            {
+                return _coffeePreferencesRepository ??
+                       (_coffeePreferencesRepository = new CoffeePreferencesRepository(_db));
+            }
+        }
+
+        public IQueueItemRepository QueueItemRepository
+        {
+            get { return _queueItemRepository ?? (_queueItemRepository = new QueueItemRepository(_db)); }
         }
 
         public void Save()

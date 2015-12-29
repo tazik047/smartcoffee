@@ -20,7 +20,7 @@ namespace SmartQueue.Model.Entities
 
         public string ContentType { get; set; }
 
-        public CoffeeMachine FavouriteCoffeeMachine { get; set; }
+        public CoffeePreferences CoffeePreferences { get; set; }
 
         public Company Company { get; set; }
 

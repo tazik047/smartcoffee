@@ -28,11 +28,9 @@
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                 </div>
                 <br />
-                <div class="checkbox">
-                    @Html.LabelFor(model => model.RememberMe, new { @class = "col-md-offset-1" })
-                    <div class="switch switch-square" data-on-label="<i class='fa fa-check'></i>" data-off-label="<i class='fa fa-times'></i>">
-                        @Html.CheckBoxFor(model => model.RememberMe)
-                    </div>
+                <div>
+                    @Html.CheckBoxFor(model => model.RememberMe, new { @class = "col-md-offset-1" })
+                    @Html.LabelFor(model => model.RememberMe)
                 </div>
                 <br />
                 <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> ВОЙТИ</button>

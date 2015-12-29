@@ -27,6 +27,8 @@ namespace SmartQueue.DAL
         public DbSet<Role> Roles { get; set; }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<CoffeePreferences> CoffeePreferenceses { get; set; }
         
         public virtual void SetState(object item, EntityState state)
         {
