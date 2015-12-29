@@ -48,4 +48,8 @@ public class AccountHelper {
         }
         return instance;
     }
+
+    public void Logout(){
+        _db.getWritableDatabase().execSQL("DELETE FROM " + DataBaseHelper.TABLE);
+    }
 }

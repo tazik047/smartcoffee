@@ -151,9 +151,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             if(getCurrentFocus()!=null) {
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(mPasswordView.getWindowToken(), 0);
-                imm.hideSoftInputFromWindow(mEmailView.getWindowToken(), 0);
+                InputMethodManager inputMethodManager = (InputMethodManager) LoginActivity.this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(LoginActivity.this.getCurrentFocus().getWindowToken(), 0);
             }
             mAuthTask.execute((Void) null);
         }
@@ -167,6 +166,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     private void goToMainActivity(){
         Intent intent=new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     /**
