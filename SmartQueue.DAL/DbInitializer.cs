@@ -30,7 +30,7 @@ namespace SmartQueue.DAL
                 new User {Login = "Admin", Email = "admin@email.com", Password = "Password", Roles = new List<Role> {roles[0]}},
                 new User {Login = "Director", Email = "director@email.com", Password = "Password", Roles = new List<Role> {roles[1]}},
                 new User {Login = "ServiceStaff", Email = "service@email.com", Password = "Password", Roles = new List<Role> {roles[2]}},
-                new User {Login = "Stas", Email = "user@email.com", Password = "Password", Roles = new List<Role> {roles[3]}},
+                new User {Login = "Stas", Email = "user@email.com", Password = "Password", Roles = new List<Role> {roles[3]}, ContentType = "image/jpg"},
                 new User {Login = "Masha", Email = "user1@email.com", Password = "Password", Roles = new List<Role> {roles[3]}},
             };
             foreach (var user in users)

@@ -32,7 +32,7 @@ namespace SmartQueue.Web.Controllers
                 var user = User.Identity.GetUser();
                 _smartQueueServices.PreferencesService
                     .UpdateUserPreferences(user, Mapper.Map<CoffeePreferences>(model));
-                return RedirectToAction("Index", "Queue");
+                return RedirectToAction("AddToQueue", "Queue");
             }
             return View(model);
         }
