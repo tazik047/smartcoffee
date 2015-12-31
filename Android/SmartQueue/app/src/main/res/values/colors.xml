@@ -7,4 +7,6 @@
     <color name="btBackground">#68DFF0</color>
     <color name="btText">#FFFFFF</color>
     <color name="menu_background">#424a5d</color>
+    <color name="material_drawer_background">#424a5d</color>
+    <color name="material_drawer_selected">#68dff0</color>
 </resources>
