@@ -38,7 +38,7 @@ namespace SmartQueue.DAL.Repositories
 
         public IEnumerable<T> Get()
         {
-            return DbSet.ToList();
+            return DbSet;
         }
 
         public T Get(long id)
@@ -48,7 +48,7 @@ namespace SmartQueue.DAL.Repositories
 
         public IEnumerable<T> Get(Func<T, bool> predicat)
         {
-            return DbSet.Where(predicat).ToList();
+            return DbSet.Where(predicat);
         }
 
         public long Count()

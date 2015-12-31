@@ -45,10 +45,17 @@ namespace SmartQueue.Web.ApiControllers
             {
                 return BadRequest(ModelState);
             }
-            var loginedUser = _authorization.Login(user.Login, user.Password, user.RememberMe);
-            if (loginedUser != null)
+            try
             {
-                return Ok(Mapper.Map<UserViewModel>(loginedUser));
+                var loginedUser = _authorization.Login(user.Login, user.Password, user.RememberMe);
+                if (loginedUser != null)
+                {
+                    return Ok(Mapper.Map<UserViewModel>(loginedUser));
+                }
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                return Unauthorized();
             }
             ModelState.AddModelError("", "Логин или пароль введен неверно.");
             return BadRequest(ModelState);

@@ -11,10 +11,8 @@ namespace SmartQueue.Model.Entities
 
         public string Name { get; set; }
 
-        public User Director { get; set; }
+        public virtual ICollection<User> Employees { get; set; }
 
-        public ICollection<User> Employees { get; set; }
-
-        public ICollection<CoffeeMachine> CoffeeMachines { get; set; } 
+        public virtual ICollection<CoffeeMachine> CoffeeMachines { get; set; } 
     }
 }

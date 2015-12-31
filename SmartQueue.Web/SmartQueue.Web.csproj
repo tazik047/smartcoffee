@@ -154,6 +154,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministrateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
     <Compile Include="Controllers\QueueController.cs" />
@@ -163,9 +164,11 @@
     <Compile Include="Infrastructure\HttpModules\AuthorizationHttpModule.cs" />
     <Compile Include="Models\DrinkTypeViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\NotActiveCompanyViewModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\QueueCreationViewModel.cs" />
-    <Compile Include="Models\RegisterViewModel.cs" />
+    <Compile Include="Models\RegisterCompanyViewModel.cs" />
+    <Compile Include="Models\RegisterUserViewModel.cs" />
     <Compile Include="Models\SizeViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -207,13 +210,15 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\RegisterCompany.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
     <Content Include="Views\Preferences\Index.cshtml" />
     <Content Include="Views\Queue\AddToQueue.cshtml" />
+    <Content Include="Views\Account\RegisterUser.cshtml" />
+    <Content Include="Views\Administrate\ActivateCompany.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />

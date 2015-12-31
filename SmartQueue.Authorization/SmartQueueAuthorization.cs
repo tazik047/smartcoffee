@@ -24,14 +24,18 @@ namespace SmartQueue.Authorization
         public User Login(string userName, string password, bool isPersistent)
         {
             var retUser = _service.Login(userName, password);
-            if (retUser != null)
+            if (retUser != null && retUser.IsActive)
                 CreateCookie(userName, isPersistent);
+            else if (retUser != null && !retUser.IsActive)
+            {
+                throw new UnauthorizedAccessException();
+            }
             return retUser;
         }
 
-        public void RegisterUser(User user)
+        public void RegisterUser(User user, string role)
         {
-            _service.RegisterUser(user);
+            _service.RegisterUser(user, role);
             Login(user.Login, user.Password, false);
         }
 

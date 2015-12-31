@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using SmartQueue.Model.Entities;
 
-namespace SmartQueue.Model.Repositories
+namespace SmartQueue.Model.Services
 {
-    public interface ICompanyRepository : IRepository<Company>
+    public interface IRoleService
     {
-        IEnumerable<Company> NotActiveCompanies();
+        Role GetDirectorRole();
     }
 }

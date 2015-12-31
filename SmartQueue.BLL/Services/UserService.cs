@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using SmartQueue.Model.Entities;
 using SmartQueue.Model.Repositories;
 using SmartQueue.Model.Services;
@@ -22,8 +23,9 @@ namespace SmartQueue.BLL.Services
             _unitOfWork.Save();
         }
 
-        public void RegisterUser(User user)
+        public void RegisterUser(User user, string role)
         {
+            user.Roles = _unitOfWork.RoleRepository.Get(r => r.Name.Equals(role)).ToList();
             _unitOfWork.UserRepository.Add(user);
             _unitOfWork.Save();
         }
@@ -56,6 +58,12 @@ namespace SmartQueue.BLL.Services
         public bool IsBanned(User user)
         {
             return !_unitOfWork.UserRepository.Get(user.Id).IsActive;
+        }
+
+        public void RegisterCompany(Company company)
+        {
+            _unitOfWork.CompanyRepository.Add(company);
+            _unitOfWork.Save();
         }
     }
 }

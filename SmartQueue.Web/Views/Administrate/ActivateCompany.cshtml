@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SmartQueue.Web.Models.NotActiveCompanyViewModel>
+
+@{
+    ViewBag.Title = "Активация компаний";
+}
+
+<h2>Активация компаний</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Activate", "ActivateConcreteCompany", new {id = item.Id}) 
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section Scripts{
+    @if (TempData.ContainsKey("Activated"))
+    {
+        @:swal("Компания успешно активирована","","success");
+    }
+}

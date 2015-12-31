@@ -11,7 +11,7 @@ namespace SmartQueue.Authorization.Interfaces
 
         User Login(string login, string password, bool isPersistent);
 
-        void RegisterUser(User user);
+        void RegisterUser(User user, string role);
 
         void LogOut();
 

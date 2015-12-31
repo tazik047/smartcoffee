@@ -11,7 +11,7 @@ namespace SmartQueue.Model.Services
     {
         void ActivateUser(long id);
 
-        void RegisterUser(User user);
+        void RegisterUser(User user, string role);
 
         User Login(string login, string password);
 
@@ -24,5 +24,7 @@ namespace SmartQueue.Model.Services
         User GetUserOrDefault(long id);
 
         bool IsBanned(User user);
+
+        void RegisterCompany(Company company);
     }
 }

@@ -11,6 +11,10 @@ namespace SmartQueue.BLL.Services
 
         private IPreferencesService _preferencesService;
 
+        private IRoleService _roleService;
+
+        private ICompanyService _companyService;
+
         public SmartQueueServices(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -24,6 +28,16 @@ namespace SmartQueue.BLL.Services
         public IPreferencesService PreferencesService
         {
             get { return _preferencesService ?? (_preferencesService = new PreferencesService(_unitOfWork)); }
+        }
+
+        public IRoleService RoleService
+        {
+            get { return _roleService ?? (_roleService = new RoleService(_unitOfWork)); }
+        }
+
+        public ICompanyService CompanyService
+        {
+            get { return _companyService ?? (_companyService = new CompanyService(_unitOfWork)); }
         }
     }
 }

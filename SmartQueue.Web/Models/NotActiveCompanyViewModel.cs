@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Web;
 
-namespace SmartQueue.Model.Entities
+namespace SmartQueue.Web.Models
 {
-    public class Role : IBaseEntity
+    public class NotActiveCompanyViewModel
     {
         public long Id { get; set; }
 
         public string Name { get; set; }
 
-        public virtual ICollection<User> Users { get; set; } 
+        public string Email { get; set; }
     }
 }

@@ -1,22 +1,11 @@
 ﻿@using SmartQueue.Authorization.Infrastructure
-@if (User.Identity.IsAuthenticated)
+@using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
 {
-    using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
     @Html.AntiForgeryToken()
-
     <ul class="nav navbar-nav navbar-right">
         <li>
             @Html.ActionLink("Здравствуйте, " + User.Identity.GetName() + "!", "Index", "Home", null, new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
-    </ul>
-    }
-}
-else
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Регистрация", "Register", "Account", null, new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Выполнить вход", "Login", "Account", null, new { id = "loginLink" })</li>
     </ul>
 }

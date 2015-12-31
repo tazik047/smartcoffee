@@ -22,7 +22,8 @@ namespace SmartQueue.Web
                     "~/Scripts/jquery.scrollTo.min.js").Include(
                     "~/Scripts/jquery.nicescroll.js").Include(
                     "~/Scripts/jquery.sparkline.js").Include(
-                    "~/Scripts/common-scripts.js"));
+                    "~/Scripts/common-scripts.js",
+                    "~/Scripts/sweetalert.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -51,7 +52,8 @@ namespace SmartQueue.Web
                       "~/font-awesome/css/font-awesome.css",
                       "~/Scripts/gritter/css/jquery.gritter.css",
                       "~/Content/style.css",
-                      "~/Content/style-responsive.css"));
+                      "~/Content/style-responsive.css",
+                      "~/Content/sweetalert.css"));
         }
     }
 }

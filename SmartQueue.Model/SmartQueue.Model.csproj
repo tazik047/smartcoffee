@@ -59,7 +59,9 @@
     <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\IUnitOfWork.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Services\ICompanyService.cs" />
     <Compile Include="Services\IPreferencesService.cs" />
+    <Compile Include="Services\IRoleService.cs" />
     <Compile Include="Services\ISmartQueueServices.cs" />
     <Compile Include="Services\IUserService.cs" />
   </ItemGroup>

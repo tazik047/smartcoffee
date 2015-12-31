@@ -19,6 +19,6 @@ namespace SmartQueue.Model.Entities
 
         public DrinkType Drink { get; set; }
 
-        public User User { get; set; }
+        public virtual User User { get; set; }
     }
 }

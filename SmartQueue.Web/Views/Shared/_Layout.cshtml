@@ -60,6 +60,25 @@
                         </a>
                     </li>
 
+                    @if (User.IsInRole("Director"))
+                    {
+                        <li class="sub-menu">
+                            <a href="@Url.Action("AddToQueue", "Queue")">
+                                <i class="fa fa-coffee"></i>
+                                <span>Очередь</span>
+                            </a>
+                        </li>
+                    }
+                    else if (User.IsInRole("Administrator"))
+                    {
+                        <li class="sub-menu">
+                            <a href="@Url.Action("ActivateCompany", "Administrate")">
+                                <i class="fa fa-unlock"></i>
+                                <span>Активировать компании</span>
+                            </a>
+                        </li>
+                    }
+
                     <li class="sub-menu">
                         <a href="@Url.Action("AddToQueue", "Queue")">
                             <i class="fa fa-coffee"></i>

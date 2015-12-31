@@ -11,5 +11,9 @@ namespace SmartQueue.Model.Services
         IUserService UserService { get; }
 
         IPreferencesService PreferencesService { get; }
+
+        IRoleService RoleService { get; }
+
+        ICompanyService CompanyService { get; }
     }
 }

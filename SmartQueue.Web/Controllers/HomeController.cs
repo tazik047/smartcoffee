@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using SmartQueue.Model.Services;
 
 namespace SmartQueue.Web.Controllers
 {

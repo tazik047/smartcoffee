@@ -11,7 +11,7 @@ namespace SmartQueue.Web.Controllers
 {
     public class QueueController : Controller
     {
-        ISmartQueueServices _service;
+        private readonly ISmartQueueServices _service;
 
         public QueueController(ISmartQueueServices service)
         {

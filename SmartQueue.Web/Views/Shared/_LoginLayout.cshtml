@@ -13,8 +13,7 @@
 
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/backstretch")
-
-    @Scripts.Render("~/bundles/form")
+    @Scripts.Render("~/bundles/common")
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -31,6 +30,7 @@
     @RenderBody()
     <script>
         $.backstretch("@Url.Content("~/Images/login-bg.jpg")", { speed: 500 });
+        @RenderSection("scripts", false)
     </script>
 </body>
 </html>

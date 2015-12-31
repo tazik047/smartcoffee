@@ -13,8 +13,8 @@ namespace SmartQueue.Model.Entities
 
         public string Address { get; set; }
 
-        public ICollection<Company> Companies { get; set; }
+        public virtual ICollection<Company> Companies { get; set; }
 
-        public ICollection<User> ServiceStaff { get; set; }
+        public virtual ICollection<User> ServiceStaff { get; set; }
     }
 }

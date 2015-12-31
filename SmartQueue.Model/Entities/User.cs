@@ -20,10 +20,12 @@ namespace SmartQueue.Model.Entities
 
         public string ContentType { get; set; }
 
-        public CoffeePreferences CoffeePreferences { get; set; }
+        public long? CompanyId { get; set; }
 
-        public Company Company { get; set; }
+        public virtual CoffeePreferences CoffeePreferences { get; set; }
 
-        public ICollection<Role> Roles { get; set; }
+        public virtual Company Company { get; set; }
+
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }
