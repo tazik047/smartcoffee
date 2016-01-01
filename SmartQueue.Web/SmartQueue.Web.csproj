@@ -155,6 +155,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdministrateController.cs" />
+    <Compile Include="Controllers\CoffeeMachineController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PreferencesController.cs" />
     <Compile Include="Controllers\QueueController.cs" />
@@ -163,8 +164,11 @@
     </Compile>
     <Compile Include="Infrastructure\HttpModules\AuthorizationHttpModule.cs" />
     <Compile Include="Models\AllCompaniesViewModel.cs" />
+    <Compile Include="Models\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\CreateCoffeeMachineViewModel.cs" />
     <Compile Include="Models\DrinkTypeViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\ManageUserViewModel.cs" />
     <Compile Include="Models\NotActiveCompanyViewModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\QueueCreationViewModel.cs" />
@@ -223,9 +227,13 @@
     <Content Include="Views\Administrate\ViewAllCompanies.cshtml" />
     <Content Include="Views\Administrate\AllEmployees.cshtml" />
     <Content Include="Views\Administrate\ActivateEmployee.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\Details.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="Views\CoffeeMachine\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,0 +1,66 @@
+﻿@model SmartQueue.Web.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Информация о пользователе";
+}
+
+<h2>Информация о пользователе</h2>
+
+<div>
+    <h4>@Model.Surname @Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            Фото
+        </dt>
+
+        <dd>
+            <img src="@Url.Action("Photo", new {id= Model.Id})" style="max-width: 500px" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Изменить данные", "Manage") |
+    @Html.ActionLink("Изменить пароль", "ChangePassword")
+</p>
+@section Scripts{
+    @if (TempData.ContainsKey("SuccessMessage"))
+    {
+        <script>
+            swal("@TempData["SuccessMessage"]", "", "success");
+        </script>
+    }
+}

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 
 namespace SmartQueue.Web.Models
 {
@@ -32,12 +30,14 @@ namespace SmartQueue.Web.Models
         public string Password { get; set; }
 
         [Required]
-        [Compare("Password")]
+        [System.ComponentModel.DataAnnotations.Compare("Password")]
         [Display(Name = "Повторите пароль")]
         public string ConfirmPassword { get; set; }
 
         [Required]
         [Display(Name = "Компания")]
         public long CompanyId { get; set; }
+
+        public List<SelectListItem> Companies { get; set; } 
     }
 }

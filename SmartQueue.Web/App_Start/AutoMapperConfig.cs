@@ -52,6 +52,11 @@ namespace SmartQueue.Web.App_Start
             Mapper.CreateMap<RegisterCompanyViewModel, User>()
                 .ForMember(u => u.IsActive, m => m.UseValue(false))
                 .ForMember(u => u.Company, m => m.MapFrom(u => new Company {Name = u.CompanyName}));
+            Mapper.CreateMap<User, ManageUserViewModel>();
+            Mapper.CreateMap<ManageUserViewModel, User>()
+                .ForMember(u => u.Id, m => m.Ignore());
+            Mapper.CreateMap<RegisterUserViewModel, User>();
+
         }
     }
 }

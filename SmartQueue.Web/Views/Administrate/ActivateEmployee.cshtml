@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SmartQueue.Web.Models.UserViewModel>
+﻿@using SmartQueue.Authorization.Infrastructure
+@model IEnumerable<SmartQueue.Web.Models.UserViewModel>
 
 @{
     ViewBag.Title = "Неактивироавнные сотрудники";
@@ -25,7 +26,7 @@ else
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th></th>
+            <th>@Html.ActionLink("Активировать всех сотрудников", "ActivateAllEmployees", new { id = User.Identity.GetUser().CompanyId })</th>
         </tr>
 
         @foreach (var item in Model)

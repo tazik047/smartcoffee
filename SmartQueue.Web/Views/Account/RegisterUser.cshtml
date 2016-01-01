@@ -28,6 +28,11 @@
                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                 </div>
                 <br>
+                @Html.DropDownListFor(model => model.CompanyId, Model.Companies, "Выберите свою компанию", new { @class = "form-control"})
+                <div>
+                    @Html.ValidationMessageFor(m => m.CompanyId, "", new { @class = "text-danger" })
+                </div>
+                <br>
                 @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = Html.DisplayNameFor(model => model.Name) })
                 <div>
                     @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartQueue.Configuration", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartQueue.Authorization", "SmartQueue.Authorization\SmartQueue.Authorization.csproj", "{BCA010E5-B20F-427F-BF53-78CAEFB33BB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartQueue.Utils", "SmartQueue.Utils\SmartQueue.Utils.csproj", "{9FE85937-4E5E-45CB-801B-21CA25E85DCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{BCA010E5-B20F-427F-BF53-78CAEFB33BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCA010E5-B20F-427F-BF53-78CAEFB33BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCA010E5-B20F-427F-BF53-78CAEFB33BB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FE85937-4E5E-45CB-801B-21CA25E85DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FE85937-4E5E-45CB-801B-21CA25E85DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FE85937-4E5E-45CB-801B-21CA25E85DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE85937-4E5E-45CB-801B-21CA25E85DCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

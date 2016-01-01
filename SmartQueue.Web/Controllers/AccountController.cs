@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using AutoMapper;
 using SmartQueue.Authorization.Infrastructure;
 using SmartQueue.Authorization.Interfaces;
@@ -93,14 +92,32 @@ namespace SmartQueue.Web.Controllers
         [HttpGet]
         public ActionResult RegisterUser()
         {
-            return View();
+            var user = new RegisterUserViewModel();
+            FillCompanies(user);
+            return View(user);
         }
 
         [AllowAnonymous]
         [HttpPost]
         public ActionResult RegisterUser(RegisterUserViewModel model)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var user = Mapper.Map<User>(model);
+                    _authorization.RegisterUser(user, "User");
+                }
+                catch (UnauthorizedAccessException e)
+                {
+                    TempData["Registered"] = "Ваша учетная запись была создана и ожидает подтверждения директором вашей фирмы";
+                    return RedirectToAction("Login");
+                }
+
+                return RedirectToAction("Index", "Home");
+            }
+            FillCompanies(model);
+            return View(model);
         }
 
         public ActionResult Logout()
@@ -109,10 +126,58 @@ namespace SmartQueue.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            if (_smartQueueServices.UserService.ChangePassword(User.Identity.GetUser().Id, model.OldPassword, model.Password))
+            {
+                TempData["SuccessMessage"] = "Пароль успешно сменен.";
+                return RedirectToAction("Details");
+            }
+            ModelState.AddModelError("OldPassword", "Пароль введен неверно");
+            return View();
+        }
+
+        public ActionResult Details()
+        {
+            var user = User.Identity.GetUser();
+            return View(Mapper.Map<UserViewModel>(user));
+        }
+
         [HttpGet]
         public ActionResult Manage()
         {
-            return View();
+            var user = User.Identity.GetUser();
+            return View(Mapper.Map<ManageUserViewModel>(user));
+        }
+
+        [HttpPost]
+        public ActionResult Manage(ManageUserViewModel user, HttpPostedFileBase file)
+        {
+            if (ModelState.IsValid)
+            {
+                var originUser = User.Identity.GetUser();
+                Mapper.Map(user, originUser);
+                if (file != null && file.ContentType.StartsWith("image"))
+                {
+                    originUser.ContentType = file.ContentType;
+                    file.SaveAs(GetPathToPhoto(user.Email));
+                }
+                _smartQueueServices.UserService.UpdateUser(originUser);
+                TempData["SuccessMessage"] = "Данные успешно сохранены";
+                return RedirectToAction("Details");
+            }
+            return View(user);
         }
 
         [AllowAnonymous]
@@ -130,8 +195,21 @@ namespace SmartQueue.Web.Controllers
                 name = user.Email;
                 contentType = user.ContentType;
             }
-            var path = Server.MapPath("~/Images/" + name);
+            var path = GetPathToPhoto(name);
             return File(path, contentType);
+        }
+
+        private void FillCompanies(RegisterUserViewModel user)
+        {
+            user.Companies =
+                _smartQueueServices.CompanyService.GetAllCompanies()
+                    .Select(c => new SelectListItem {Text = c.Name, Value = c.Id.ToString()})
+                    .ToList();
+        }
+
+        private string GetPathToPhoto(string name)
+        {
+            return Server.MapPath("~/Images/" + name);
         }
     }
 }

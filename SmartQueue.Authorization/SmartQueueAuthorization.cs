@@ -35,8 +35,9 @@ namespace SmartQueue.Authorization
 
         public void RegisterUser(User user, string role)
         {
+            var originPassword = user.Password;
             _service.RegisterUser(user, role);
-            Login(user.Login, user.Password, false);
+            Login(user.Login, originPassword, false);
         }
 
         private void CreateCookie(string userName, bool isPersistent = false)

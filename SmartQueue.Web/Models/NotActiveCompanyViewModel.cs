@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SmartQueue.Web.Models
 {
@@ -9,8 +6,10 @@ namespace SmartQueue.Web.Models
     {
         public long Id { get; set; }
 
+        [Display(Name="Название компании")]
         public string Name { get; set; }
 
+        [Display(Name = "Email")]
         public string Email { get; set; }
     }
 }

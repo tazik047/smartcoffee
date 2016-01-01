@@ -51,6 +51,10 @@
       <Project>{af14cdda-0687-43ea-b810-4d4c36504c1f}</Project>
       <Name>SmartQueue.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SmartQueue.Utils\SmartQueue.Utils.csproj">
+      <Project>{9FE85937-4E5E-45CB-801B-21CA25E85DCF}</Project>
+      <Name>SmartQueue.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

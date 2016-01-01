@@ -15,7 +15,7 @@ namespace SmartQueue.Model.Services
 
         User Login(string login, string password);
 
-        void ChangePassword(string oldPassword, string newPassword);
+        bool ChangePassword(long id, string oldPassword, string newPassword);
 
         void SetFavouriteCofeeMachine(CoffeeMachine coffeeMachine);
 
@@ -26,5 +26,7 @@ namespace SmartQueue.Model.Services
         bool IsBanned(User user);
 
         void BanUser(long id);
+
+        void UpdateUser(User user);
     }
 }

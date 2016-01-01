@@ -6,6 +6,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using SmartQueue.Model.Entities;
+using SmartQueue.Utils.Sequrity;
 
 namespace SmartQueue.DAL
 {
@@ -25,7 +26,9 @@ namespace SmartQueue.DAL
                 context.Roles.Add(role);
             }
 
-            var director = new User {Login = "EpamLogin", Password = "Password", Email = "director@epam.com", Roles = new List<Role> {roles[1]}};
+            var password = Encrypter.HashText("Password");
+
+            var director = new User {Login = "EpamLogin", Password = password, Email = "director@epam.com", Roles = new List<Role> {roles[1]}};
 
             context.Users.Add(director);
 
@@ -35,10 +38,10 @@ namespace SmartQueue.DAL
 
             var users = new[]
             {
-                new User {Login = "Admin", Email = "admin@email.com", Password = "Password", Roles = new List<Role> {roles[0]}, IsActive = true},
-                new User {Login = "ServiceStaff", Email = "service@email.com", Password = "Password", Roles = new List<Role> {roles[2]}, Company = epam},
-                new User {Login = "Stas", Email = "user@email.com", Password = "Password", Roles = new List<Role> {roles[3]}, ContentType = "image/jpg", Company = epam},
-                new User {Login = "Masha", Email = "user1@email.com", Password = "Password", Roles = new List<Role> {roles[3]}, Company = epam},
+                new User {Login = "Admin", Email = "admin@email.com", Password = password, Roles = new List<Role> {roles[0]}, IsActive = true},
+                new User {Login = "ServiceStaff", Email = "service@email.com", Password = password, Roles = new List<Role> {roles[2]}, Company = epam},
+                new User {Login = "Stas", Email = "user@email.com", Password = password, Roles = new List<Role> {roles[3]}, ContentType = "image/jpg", Company = epam},
+                new User {Login = "Masha", Email = "user1@email.com", Password = password, Roles = new List<Role> {roles[3]}, Company = epam},
             };
             foreach (var user in users)
             {

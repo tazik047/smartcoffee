@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using SmartQueue.Authorization.Infrastructure;
@@ -55,7 +53,10 @@ namespace SmartQueue.Web.Controllers
                 }
             }
             _smartQueueServices.CompanyService.ActivateAllEmployeesCompany(id);
-
+            if (User.IsInRole("Director"))
+            {
+                return RedirectToAction("AllEmployees");
+            }
             return RedirectToAction("ViewAllCompanies");
         }
 
@@ -77,7 +78,7 @@ namespace SmartQueue.Web.Controllers
         }
 
         [Authorize(Roles = "Director")]
-        public ActionResult ActivateEmployee(long id)
+        public ActionResult ActivateEmployee()
         {
             long companyId = User.Identity.GetUser().CompanyId.Value;
             var employees = _smartQueueServices.CompanyService.GetAllNotActiveEmployees(companyId);
@@ -92,6 +93,7 @@ namespace SmartQueue.Web.Controllers
             return RedirectToAction("AllEmployees");
         }
 
+        [Authorize(Roles = "Director")]
         public ActionResult DeactivateEmployee(long id)
         {
             _smartQueueServices.UserService.BanUser(id);
