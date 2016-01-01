@@ -28,6 +28,16 @@ namespace SmartQueue.Web.App_Start
             Mapper.CreateMap<Company, NotActiveCompanyViewModel>()
                 .ForMember(c => c.Email,
                     m => m.MapFrom(c => string.Join(", ", c.Employees.Where(e => e.Roles.Any(r => r.Name.Equals("Director"))).Select(e=>e.Email).ToList())));
+            Mapper.CreateMap<Company, AllCompaniesViewModel>()
+                .ForMember(c => c.Email,
+                    m =>
+                        m.MapFrom(
+                            c => string.Join(", ", c.Employees
+                                        .Where(e => e.Roles.Any(r => r.Name.Equals("Director")))
+                                        .Select(e => e.Email)
+                                        .ToList())))
+                .ForMember(c => c.AllEmployees, m => m.MapFrom(c => c.Employees.Count))
+                .ForMember(c => c.ActivatedEmployees, m => m.MapFrom(c => c.Employees.Count(e => e.IsActive)));
         }
 
         private static void RegisterPreferencesMaps()

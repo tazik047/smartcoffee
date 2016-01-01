@@ -18,6 +18,14 @@ namespace SmartQueue.Web.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Имя")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Фамилия")]
+        public string Surname { get; set; }
+
+        [Required]
         [MinLength(6)]
         [MaxLength(30)]
         [Display(Name = "Пароль")]

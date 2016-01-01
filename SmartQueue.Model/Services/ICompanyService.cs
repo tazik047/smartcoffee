@@ -18,5 +18,9 @@ namespace SmartQueue.Model.Services
         void ActivateAllEmployeesCompany(long companyId);
 
         IEnumerable<Company> GetAllCompanies();
+
+        IEnumerable<User> GetAllEmployees(long companyId);
+
+        IEnumerable<User> GetAllNotActiveEmployees(long companyId);
     }
 }

@@ -5,20 +5,16 @@ using System.Web;
 
 namespace SmartQueue.Web.Models
 {
-    public class UserViewModel
+    public class AllCompaniesViewModel
     {
         public long Id { get; set; }
 
-        public string Login { get; set; }
-
         public string Name { get; set; }
-
-        public string Surname { get; set; }
-
-        public string Password { get; set; }
 
         public string Email { get; set; }
 
-        public bool IsActive { get; set; }
+        public long AllEmployees { get; set; }
+
+        public long ActivatedEmployees { get; set; }
     }
 }

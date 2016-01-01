@@ -24,6 +24,14 @@ namespace SmartQueue.Web.Models
         public string Password { get; set; }
 
         [Required]
+        [Display(Name = "Имя")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Фамилия")]
+        public string Surname { get; set; }
+
+        [Required]
         [Compare("Password")]
         [Display(Name = "Повторите пароль")]
         public string ConfirmPassword { get; set; }

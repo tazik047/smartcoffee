@@ -25,6 +25,6 @@ namespace SmartQueue.Model.Services
 
         bool IsBanned(User user);
 
-        void RegisterCompany(Company company);
+        void BanUser(long id);
     }
 }

@@ -55,6 +55,16 @@ namespace SmartQueue.BLL.Services
             return _unitOfWork.CompanyRepository.ActiveCompanies();
         }
 
+        public IEnumerable<User> GetAllEmployees(long companyId)
+        {
+            return _unitOfWork.UserRepository.Get(u => u.CompanyId == companyId).ToList();
+        }
+
+        public IEnumerable<User> GetAllNotActiveEmployees(long companyId)
+        {
+            return _unitOfWork.UserRepository.Get(u => u.CompanyId == companyId && !u.IsActive).ToList();
+        }
+
         private void SetActiveStatus(bool activeStatus, long companyId)
         {
             foreach (var employee in _unitOfWork.UserRepository.Get(u => u.CompanyId == companyId).ToList())

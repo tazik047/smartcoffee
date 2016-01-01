@@ -162,6 +162,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\HttpModules\AuthorizationHttpModule.cs" />
+    <Compile Include="Models\AllCompaniesViewModel.cs" />
     <Compile Include="Models\DrinkTypeViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\NotActiveCompanyViewModel.cs" />
@@ -219,6 +220,9 @@
     <Content Include="Views\Queue\AddToQueue.cshtml" />
     <Content Include="Views\Account\RegisterUser.cshtml" />
     <Content Include="Views\Administrate\ActivateCompany.cshtml" />
+    <Content Include="Views\Administrate\ViewAllCompanies.cshtml" />
+    <Content Include="Views\Administrate\AllEmployees.cshtml" />
+    <Content Include="Views\Administrate\ActivateEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />

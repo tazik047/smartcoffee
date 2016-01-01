@@ -16,6 +16,10 @@ namespace SmartQueue.Model.Entities
 
         public string Email { get; set; }
 
+        public string Name { get; set; }
+
+        public string Surname { get; set; }
+
         public bool IsActive { get; set; }
 
         public string ContentType { get; set; }

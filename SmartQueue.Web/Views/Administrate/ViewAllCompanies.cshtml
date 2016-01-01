@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SmartQueue.Web.Models.AllCompaniesViewModel>
+
+@{
+    ViewBag.Title = "Все активные компании";
+}
+
+<h2>Все активные компании</h2>
+@if (!Model.Any())
+{
+    <div>Нет активных компаний</div>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AllEmployees)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActivatedEmployees)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AllEmployees)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActivatedEmployees)
+                </td>
+                <td>
+                    @Html.ActionLink("Заблокировать компанию", "BanCompany", new {id = item.Id}) |
+                    @Html.ActionLink("Активировать всех сотрудников", "ActivateAllEmployees", new {id = item.Id})
+                </td>
+            </tr>
+        }
+    </table>
+}

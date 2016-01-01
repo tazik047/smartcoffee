@@ -3,21 +3,16 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-
     <title>@ViewBag.Title</title>
-
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
 <body>
-
     <section id="container">
         <!-- **********************************************************************************************************************************************************
         TOP BAR CONTENT & NOTIFICATIONS
@@ -33,10 +28,10 @@
             <div class="top-menu">
                 @using (Html.BeginForm("LogOut", "Account", FormMethod.Post, new { id = "logoutForm" }))
                 {
-                @Html.AntiForgeryToken()
-                <ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
-                </ul>
+                    @Html.AntiForgeryToken()
+                    <ul class="nav pull-right top-menu">
+                        <li><a class="logout" href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+                    </ul>
                 }
             </div>
         </header>
@@ -49,10 +44,8 @@
             <div id="sidebar" class="nav-collapse ">
                 <!-- sidebar menu start-->
                 <ul class="sidebar-menu" id="nav-accordion">
-
                     <p class="centered"><a href="@Url.Action("Manage", "Account")"><img src="@Url.Action("Photo","Account",new{id=User.Identity.GetUser().Id})" class="img-circle" width="60"></a></p>
                     <h5 class="centered">@User.Identity.Name</h5>
-
                     <li class="mt">
                         <a href="@Url.Action("Index","Home")">
                             <i class="fa fa-dashboard"></i>
@@ -63,9 +56,16 @@
                     @if (User.IsInRole("Director"))
                     {
                         <li class="sub-menu">
-                            <a href="@Url.Action("AddToQueue", "Queue")">
-                                <i class="fa fa-coffee"></i>
-                                <span>Очередь</span>
+                            <a href="@Url.Action("ActivateEmployee", "Administrate")">
+                                <i class="fa fa-unlock"></i>
+                                <span>Новые сотрудники</span>
+                            </a>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="@Url.Action("AllEmployees", "Administrate")">
+                                <i class="fa fa-users"></i>
+                                <span>Все сотрудники</span>
                             </a>
                         </li>
                     }
@@ -77,6 +77,13 @@
                                 <span>Активировать компании</span>
                             </a>
                         </li>
+
+                        <li class="sub-menu">
+                            <a href="@Url.Action("ViewAllCompanies", "Administrate")">
+                                <i class="fa fa-users"></i>
+                                <span>Все компании</span>
+                            </a>
+                        </li>
                     }
 
                     <li class="sub-menu">
@@ -85,7 +92,6 @@
                             <span>Очередь</span>
                         </a>
                     </li>
-
                     <li class="sub-menu">
                         <a href="@Url.Action("Index", "Preferences")">
                             <i class="fa fa-cogs"></i>
@@ -103,16 +109,13 @@
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
-
                 <div class="row">
                     <div class="col-lg-12 main-chart">
                         @RenderBody()
                     </div><!-- /col-lg-9 END SECTION MIDDLE -->
-
                 </div><!--/row -->
             </section>
         </section>
-
         <!--main content end-->
         <!--footer start-->
         <footer class="site-footer">
@@ -125,12 +128,10 @@
         </footer>
         <!--footer end-->
     </section>
-
     <!-- js placed at the end of the document so the pages load faster -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/common")
-
     @Scripts.Render("~/bundles/gritter");
 
     <script type="text/javascript">

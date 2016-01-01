@@ -60,9 +60,11 @@ namespace SmartQueue.BLL.Services
             return !_unitOfWork.UserRepository.Get(user.Id).IsActive;
         }
 
-        public void RegisterCompany(Company company)
+        public void BanUser(long id)
         {
-            _unitOfWork.CompanyRepository.Add(company);
+            var user = _unitOfWork.UserRepository.Get(id);
+            user.IsActive = false;
+            _unitOfWork.UserRepository.Edit(user);
             _unitOfWork.Save();
         }
     }
