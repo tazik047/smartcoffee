@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using SmartQueue.Authorization.Infrastructure;
 using SmartQueue.Model.Services;
 using SmartQueue.Web.Models;
 
 namespace SmartQueue.Web.Controllers
 {
-    [Authorize(Roles = "Administrator,Director")]
     public class AdministrateController : Controller
     {
         private readonly ISmartQueueServices _smartQueueServices;
@@ -32,6 +32,27 @@ namespace SmartQueue.Web.Controllers
             _smartQueueServices.CompanyService.ActivateCompany(id);
             TempData["Activate"] = "activated";
             return RedirectToAction("ActivateCompany");
+        }
+
+        [Authorize(Roles = "Administrator")]
+        public ActionResult ViewAllCompanies()
+        {
+            var companies = _smartQueueServices.CompanyService.GetAllCompanies();
+            return View();
+        }
+
+        [Authorize(Roles = "Administrator,Director")]
+        public ActionResult ActivateAllEmployees(long companyId)
+        {
+            if (User.IsInRole("Director"))
+            {
+                if (companyId != User.Identity.GetUser().CompanyId.Value)
+                {
+                    throw new UnauthorizedAccessException();
+                }
+
+            }
+            return View();
         }
     }
 }

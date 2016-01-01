@@ -18,6 +18,11 @@ namespace SmartQueue.DAL.Repositories
         public IEnumerable<Company> NotActiveCompanies()
         {
             return DbSet.Include(c => c.Employees).Where(c => c.Employees.All(e => !e.IsActive)).ToList();
-        } 
+        }
+
+        public IEnumerable<Company> ActiveCompanies()
+        {
+            return DbSet.Include(c => c.Employees).Where(c => c.Employees.Any(e => e.IsActive)).ToList();
+        }
     }
 }

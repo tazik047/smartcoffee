@@ -10,5 +10,7 @@ namespace SmartQueue.Model.Repositories
     public interface ICompanyRepository : IRepository<Company>
     {
         IEnumerable<Company> NotActiveCompanies();
+
+        IEnumerable<Company> ActiveCompanies();
     }
 }

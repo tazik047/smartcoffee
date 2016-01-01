@@ -50,6 +50,11 @@ namespace SmartQueue.BLL.Services
             SetActiveStatus(true, companyId);
         }
 
+        public IEnumerable<Company> GetAllCompanies()
+        {
+            return _unitOfWork.CompanyRepository.ActiveCompanies();
+        }
+
         private void SetActiveStatus(bool activeStatus, long companyId)
         {
             foreach (var employee in _unitOfWork.UserRepository.Get(u => u.CompanyId == companyId).ToList())
