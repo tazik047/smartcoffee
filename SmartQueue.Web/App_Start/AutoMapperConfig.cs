@@ -21,6 +21,28 @@ namespace SmartQueue.Web.App_Start
             RegisterUserMaps();
             RegisterPreferencesMaps();
             RegisterCompanyMaps();
+            RegisterCoffeeMachineMaps();
+        }
+
+        private static void RegisterCoffeeMachineMaps()
+        {
+            Mapper.CreateMap<CoffeeMachine, CoffeeMachineViewModel>()
+                .ForMember(c => c.Company, m => m.MapFrom(c => c.Company.Name))
+                .ForMember(c => c.ServiceStaff,
+                    m => m.MapFrom( c =>
+                                string.Join(", ",
+                                    c.ServiceStaff
+                                    .Select(s => string.Format("{0} {1}", s.Surname, s.Name))
+                                    .ToList())
+                                 )
+                           );
+            Mapper.CreateMap<CreateCoffeeMachineViewModel, CoffeeMachine>()
+                .ForMember(c => c.Name, m => m.MapFrom(c => c.Address));
+            Mapper.CreateMap<CoffeeMachine, EditCoffeeMachineViewModel>()
+                .ForMember(c => c.ServiceStuff, m => m.MapFrom(c => c.ServiceStaff.Select(s => s.Id).ToList()));
+            Mapper.CreateMap<EditCoffeeMachineViewModel, CoffeeMachine>()
+                .ForMember(c => c.ServiceStaff,
+                    m => m.MapFrom(c => _smartQueueServices.UserService.GetSelectedUsers(c.ServiceStuff)));
         }
 
         private static void RegisterCompanyMaps()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SmartQueue.Model.Entities;
 using SmartQueue.Model.Repositories;
@@ -91,6 +92,11 @@ namespace SmartQueue.BLL.Services
             originUser.ContentType = user.ContentType;
             _unitOfWork.UserRepository.Edit(originUser);
             _unitOfWork.Save();
+        }
+
+        public IEnumerable<User> GetSelectedUsers(List<long> userIds)
+        {
+            return _unitOfWork.UserRepository.Get(u => userIds.Contains(u.Id)).ToList();
         }
     }
 }

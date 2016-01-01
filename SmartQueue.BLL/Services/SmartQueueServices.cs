@@ -15,6 +15,8 @@ namespace SmartQueue.BLL.Services
 
         private ICompanyService _companyService;
 
+        private ICoffeeMachineService _coffeeMachineService;
+
         public SmartQueueServices(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -38,6 +40,11 @@ namespace SmartQueue.BLL.Services
         public ICompanyService CompanyService
         {
             get { return _companyService ?? (_companyService = new CompanyService(_unitOfWork)); }
+        }
+
+        public ICoffeeMachineService CoffeeMachineService
+        {
+            get { return _coffeeMachineService ??(_coffeeMachineService = new CoffeeMachineService(_unitOfWork)); }
         }
     }
 }

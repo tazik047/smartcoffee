@@ -68,6 +68,13 @@
                                 <span>Все сотрудники</span>
                             </a>
                         </li>
+
+                        <li class="sub-menu">
+                            <a href="@Url.Action("AllCoffeeMachine", "CoffeeMachine")">
+                                <i class="fa fa-beer"></i>
+                                <span>Все кофеварки</span>
+                            </a>
+                        </li>
                     }
                     else if (User.IsInRole("Administrator"))
                     {
@@ -82,6 +89,20 @@
                             <a href="@Url.Action("ViewAllCompanies", "Administrate")">
                                 <i class="fa fa-users"></i>
                                 <span>Все компании</span>
+                            </a>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="@Url.Action("AddCoffeeMachine", "CoffeeMachine")">
+                                <i class="fa fa-plus"></i>
+                                <span>Добавить новую кофеварку</span>
+                            </a>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="@Url.Action("AllCoffeeMachine", "CoffeeMachine")">
+                                <i class="fa fa-beer"></i>
+                                <span>Все кофеварки</span>
                             </a>
                         </li>
                     }

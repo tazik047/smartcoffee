@@ -28,5 +28,7 @@ namespace SmartQueue.Model.Services
         void BanUser(long id);
 
         void UpdateUser(User user);
+
+        IEnumerable<User> GetSelectedUsers(List<long> userIds);
     }
 }

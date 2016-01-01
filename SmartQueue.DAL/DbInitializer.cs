@@ -28,7 +28,13 @@ namespace SmartQueue.DAL
 
             var password = Encrypter.HashText("Password");
 
-            var director = new User {Login = "EpamLogin", Password = password, Email = "director@epam.com", Roles = new List<Role> {roles[1]}};
+            var director = new User
+            {
+                Login = "EpamLogin",
+                Password = password,
+                Email = "director@epam.com",
+                Roles = new List<Role> {roles[1]}
+            };
 
             context.Users.Add(director);
 
@@ -38,7 +44,7 @@ namespace SmartQueue.DAL
 
             var users = new[]
             {
-                new User {Login = "Admin", Email = "admin@email.com", Password = password, Roles = new List<Role> {roles[0]}, IsActive = true},
+                new User {Login = "Admin", Email = "admin@email.com", Password = password, Roles = new List<Role> {roles[0]}, IsActive = true, ContentType = "iamge/gif"},
                 new User {Login = "ServiceStaff", Email = "service@email.com", Password = password, Roles = new List<Role> {roles[2]}, Company = epam},
                 new User {Login = "Stas", Email = "user@email.com", Password = password, Roles = new List<Role> {roles[3]}, ContentType = "image/jpg", Company = epam},
                 new User {Login = "Masha", Email = "user1@email.com", Password = password, Roles = new List<Role> {roles[3]}, Company = epam},
