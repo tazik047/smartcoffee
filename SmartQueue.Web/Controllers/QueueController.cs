@@ -1,7 +1,10 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using AutoMapper;
 using SmartQueue.Web.Models;
 using SmartQueue.Model.Services;
 using SmartQueue.Authorization.Infrastructure;
+using SmartQueue.Model.Entities;
 
 namespace SmartQueue.Web.Controllers
 {
@@ -14,18 +17,47 @@ namespace SmartQueue.Web.Controllers
             _service = service;
         }
 
-        // GET: Queue
         public ActionResult Index()
         {
+            if (!_service.QueueService.IsWait(User.Identity.GetUser().Id))
+            {
+                return RedirectToAction("AddToQueue");
+            }
             return View();
         }
 
+        [HttpGet]
         public ActionResult AddToQueue()
         {
-            var queue = new QueueCreationViewModel();
+            if (_service.QueueService.IsWait(User.Identity.GetUser().Id))
+            {
+                return RedirectToAction("Index");
+            }
             var prefs = _service.PreferencesService.GetUserPreferences(User.Identity.GetUser());
-            queue.Order = AutoMapper.Mapper.Map<OrderViewModel>(prefs);
-            return View(queue);
+            var order = Mapper.Map<OrderViewModel>(prefs);
+            FillCoffeeMachines(order);
+            return View(order);
+        }
+
+        [HttpPost]
+        public ActionResult AddToQueue(OrderViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var order = Mapper.Map<Order>(model);
+                order.UserId = User.Identity.GetUser().Id;
+                _service.QueueService.AddToQueue(order);
+                return RedirectToAction("Index");
+            }
+            FillCoffeeMachines(model);
+            return View(model);
+        }
+
+        private void FillCoffeeMachines(OrderViewModel model)
+        {
+            model.CoffeeMachines = _service.CoffeeMachineService.GetAllCoffeeMachines(User.Identity.GetUser().CompanyId.Value)
+                    .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() })
+                    .ToList();
         }
     }
 }

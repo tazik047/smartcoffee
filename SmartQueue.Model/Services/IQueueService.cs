@@ -15,8 +15,10 @@ namespace SmartQueue.Model.Services
 
         IEnumerable<User> GetAllFromQueue(long coffeeMachineId);
 
-        TimeSpan TimeLeft(long userId);
+        TimeSpan TimeLeft(long coffeeMachineId);
 
         bool IsWait(long userId);
+
+        Order CurrentOrder(long userId);
     }
 }

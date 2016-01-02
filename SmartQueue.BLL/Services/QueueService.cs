@@ -2,12 +2,12 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using AutoMapper;
+using SmartQueue.BLL.IoT.CoffeeMachine;
 using SmartQueue.Model.Entities;
 using SmartQueue.Model.Repositories;
 using SmartQueue.Model.Services;
+using Order = SmartQueue.Model.Entities.Order;
 
 namespace SmartQueue.BLL.Services
 {
@@ -18,36 +18,20 @@ namespace SmartQueue.BLL.Services
         private static readonly object Locker= new object();
 
         private static readonly ConcurrentDictionary<long, List<Order>> Queue = new ConcurrentDictionary<long, List<Order>>();
+        
+        private readonly ICoffeeMachine _coffeeMachine;
 
         static QueueService()
         {
-            
+            Mapper.CreateMap<Order, IoT.CoffeeMachine.Order>()
+                .ForMember(o => o.CoffeeMachineAddress, m => m.MapFrom(o => o.CoffeeMachine.Address));
         }
-
-        /*void Waiter()
-        {
-            while (true)
-            {
-                var makingOrders = new List<Order>();
-                lock (Locker)
-                {
-                    foreach (var orders in Queue)
-                    {
-                        if (orders.Value.Count > 0)
-                        {
-                            makingOrders.Add(orders.Value[0]);
-                            orders.Value.RemoveAt(0);
-                        }
-                    }
-                }
-                Thread.Sleep(60000);
-                //TODO Notify users
-            }
-        }*/
 
         public QueueService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
+            _coffeeMachine = new CoffeeMachineClient();
+
         }
 
         public void AddToQueue(Order order)
@@ -64,6 +48,7 @@ namespace SmartQueue.BLL.Services
                     Queue[order.CoffeeMachineId].Add(order);
                 }
             }
+            _coffeeMachine.MakeDrink(Mapper.Map<IoT.CoffeeMachine.Order>(order));
         }
 
         public void RemoveFromQueue(long userId)
@@ -81,17 +66,23 @@ namespace SmartQueue.BLL.Services
 
         public IEnumerable<User> GetAllFromQueue(long coffeeMachineId)
         {
-            return Queue[coffeeMachineId].Select(c => c.User).ToList();
+            return Queue[coffeeMachineId].OrderBy(c=>c.StartDate).Select(c => c.User).ToList();
         }
 
-        public TimeSpan TimeLeft(long userId)
+        public TimeSpan TimeLeft(long coffeeMachineId)
         {
-            throw new NotImplementedException();
+            var result = _coffeeMachine.WaitFor(coffeeMachineId);
+            return new TimeSpan(0, 0, result.SecondsToEnd);
         }
 
         public bool IsWait(long userId)
         {
             return Queue.SelectMany(q => q.Value).Any(o => o.UserId == userId);
+        }
+
+        public Order CurrentOrder(long userId)
+        {
+            return Queue.SelectMany(q => q.Value).FirstOrDefault(o => o.UserId == userId);
         }
     }
 }

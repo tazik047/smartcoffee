@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\AccountController.cs" />
+    <Compile Include="ApiControllers\CoffeeReadyController.cs" />
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -173,7 +174,6 @@
     <Compile Include="Models\ManageUserViewModel.cs" />
     <Compile Include="Models\NotActiveCompanyViewModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
-    <Compile Include="Models\QueueCreationViewModel.cs" />
     <Compile Include="Models\RegisterCompanyViewModel.cs" />
     <Compile Include="Models\RegisterUserViewModel.cs" />
     <Compile Include="Models\SizeViewModel.cs" />
@@ -235,6 +235,7 @@
     <Content Include="Views\CoffeeMachine\AddCoffeeMachine.cshtml" />
     <Content Include="Views\CoffeeMachine\AllCoffeeMachine.cshtml" />
     <Content Include="Views\CoffeeMachine\Edit.cshtml" />
+    <Content Include="Views\Queue\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />

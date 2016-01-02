@@ -1,4 +1,4 @@
-﻿@model SmartQueue.Web.Models.QueueCreationViewModel
+﻿@model SmartQueue.Web.Models.OrderViewModel
 
 @{
     ViewBag.Title = "Добавление в очередь";
@@ -17,32 +17,32 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CoffeeMachineId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select class="form-control"></select>
+                @Html.DropDownListFor(model => model.CoffeeMachineId, Model.CoffeeMachines, "Выберите кофеварку", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CoffeeMachineId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Order.Drink, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Drink, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Order.Drink, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Order.Drink, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Drink, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Drink, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Order.Size, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Size, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Order.Size, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Order.Size, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Size, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Order.Sugar, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Sugar, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Order.Sugar, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Order.Sugar, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Sugar, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sugar, "", new { @class = "text-danger" })
             </div>
         </div>
 

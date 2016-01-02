@@ -37,7 +37,7 @@ namespace SmartCoffeeMachine
                             if (queueItem.SecondsToEnd == 0)
                             {
                                 item.Value.TryDequeue(out queueItem);
-                                Util.SendRequest(item.Key, queueItem.UserId);
+                                Task.Run(() => Util.SendRequestAsync(queueItem.UserId));
                             }
                         }
                     }
