@@ -17,5 +17,7 @@ namespace SmartQueue.Model.Services
         ICompanyService CompanyService { get; }
 
         ICoffeeMachineService CoffeeMachineService { get; }
+
+        IQueueService QueueService { get; }
     }
 }

@@ -43,6 +43,7 @@
     <Compile Include="Services\CoffeeMachineService.cs" />
     <Compile Include="Services\CompanyService.cs" />
     <Compile Include="Services\PreferencesService.cs" />
+    <Compile Include="Services\QueueService.cs" />
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\SmartQueueServices.cs" />
     <Compile Include="Services\UserService.cs" />

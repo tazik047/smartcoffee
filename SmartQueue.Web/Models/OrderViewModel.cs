@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace SmartQueue.Web.Models
 {
@@ -20,5 +22,11 @@ namespace SmartQueue.Web.Models
         [UIHint("Enum")]
         [Display(Name = "Напиток")]
         public DrinkTypeViewModel Drink { get; set; }
+
+        [Required]
+        [Display(Name = "Кофеварка")]
+        public long CoffeeMachineId { get; set; }
+
+        public List<SelectListItem> CoffeeMachines{get; set; }
     }
 }

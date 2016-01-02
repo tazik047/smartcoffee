@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using AutoMapper;
 using SmartQueue.Authorization.Infrastructure;
 using SmartQueue.Model.Entities;
@@ -21,7 +22,9 @@ namespace SmartQueue.Web.Controllers
         {
             var user = User.Identity.GetUser();
             var preferences = _smartQueueServices.PreferencesService.GetUserPreferences(user);
-            return View(Mapper.Map<OrderViewModel>(preferences));
+            var model = Mapper.Map<OrderViewModel>(preferences);
+            FillCoffeeMachines(model);
+            return View(model);
         }
 
         [HttpPost]
@@ -34,7 +37,15 @@ namespace SmartQueue.Web.Controllers
                     .UpdateUserPreferences(user, Mapper.Map<CoffeePreferences>(model));
                 return RedirectToAction("AddToQueue", "Queue");
             }
+            FillCoffeeMachines(model);
             return View(model);
+        }
+
+        private void FillCoffeeMachines(OrderViewModel model)
+        {
+            model.CoffeeMachines = _smartQueueServices.CoffeeMachineService.GetAllCoffeeMachines(User.Identity.GetUser().CompanyId.Value)
+                    .Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() })
+                    .ToList();
         }
     }
 }
