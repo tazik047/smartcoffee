@@ -147,7 +147,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\AccountController.cs" />
+    <Compile Include="ApiControllers\CoffeeMachineController.cs" />
     <Compile Include="ApiControllers\CoffeeReadyController.cs" />
+    <Compile Include="ApiControllers\DrinkSizesController.cs" />
+    <Compile Include="ApiControllers\DrinkTypesController.cs" />
+    <Compile Include="ApiControllers\PreferencesController.cs" />
     <Compile Include="ApiControllers\QueueController.cs" />
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />

@@ -7,18 +7,17 @@
     <string name="prompt_password">Пароль</string>
     <string name="action_sign_in">Войти</string>
     <string name="action_sign_in_short">Войти</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_invalid_email">Логин введен неверный</string>
+    <string name="error_invalid_password">Пароль слишком короткий</string>
+    <string name="error_incorrect_password">Неверный пароль</string>
     <string name="error_field_required">Поле обязательно</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
-    <string name="title_activity_main">MainActivity</string>
 
     <string name="drawer_item_home">Главная</string>
     <string name="drawer_item_queue">Очередь</string>
     <string name="drawer_item_preferences">Предпочтения</string>
     <string name="drawer_item_setting">Настройки</string>
     <string name="drawer_item_logout">Выйти</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

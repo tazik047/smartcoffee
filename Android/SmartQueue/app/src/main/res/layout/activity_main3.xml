@@ -15,4 +15,17 @@
         android:paddingTop="@dimen/tool_bar_top_padding"
          />
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:id="@+id/fragmLayout"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:layout_alignParentStart="true"></FrameLayout>
+    </ScrollView>
+
 </RelativeLayout><!--android:elevation="4dp" android:transitionName="actionBar"-->

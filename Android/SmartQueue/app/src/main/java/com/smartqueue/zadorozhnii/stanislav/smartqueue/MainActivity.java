@@ -1,6 +1,7 @@
 package com.smartqueue.zadorozhnii.stanislav.smartqueue;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -72,9 +73,18 @@ public class MainActivity extends AppCompatActivity {
                     // Обработка клика
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
                         if (drawerItem instanceof Nameable) {
+                            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                             switch (((Nameable) drawerItem).getNameRes()) {
                                 case R.string.drawer_item_home:
                                     Toast.makeText(MainActivity.this, "My click", Toast.LENGTH_SHORT).show();
+                                    break;
+                                case R.string.drawer_item_queue:
+                                    Queue queue = new Queue(R.layout.fragment_add_to_queue);
+                                    fragmentTransaction.replace(R.id.fragmLayout, queue);
+                                    break;
+                                case R.string.drawer_item_preferences:
+                                    Preferences preferences = new Preferences();
+                                    fragmentTransaction.replace(R.id.fragmLayout, preferences);
                                     break;
                                 case R.string.drawer_item_logout:
                                     AccountHelper.getInstance().Logout();
@@ -83,7 +93,9 @@ public class MainActivity extends AppCompatActivity {
                                     finish();
                                     break;
                             }
-                            Toast.makeText(MainActivity.this, MainActivity.this.getString(((Nameable) drawerItem).getNameRes()), Toast.LENGTH_SHORT).show();
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                            //Toast.makeText(MainActivity.this, MainActivity.this.getString(((Nameable) drawerItem).getNameRes()), Toast.LENGTH_SHORT).show();
                         }
                     }
                 })

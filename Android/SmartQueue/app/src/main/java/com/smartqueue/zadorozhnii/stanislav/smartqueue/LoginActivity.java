@@ -29,6 +29,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -282,27 +283,28 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                         @Override
                         public void execute(final ApiCaller caller, final HttpClient client, final HttpResponse response) {
                             String text = null;
-                            try {
-                                if(response.getStatusLine().getStatusCode()==200) {
-                                    text = EntityUtils.toString(response.getEntity());
-                                    Gson g = new Gson();
-                                    Type t = new TypeToken<User>(){}.getType();
-                                    User u = g.fromJson(text, t);
-                                    caller.authorize(u, (DefaultHttpClient)client);
-                                    isLoggined[0] = true;
+                            if (response.getStatusLine().getStatusCode() == 200) {
+                                Gson g = new Gson();
+                                Type t = new TypeToken<User>() {
+                                }.getType();
+                                User u = null;
+                                try {
+                                    u = g.fromJson(EntityUtils.toString(response.getEntity()), t);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
                                 }
-                                else{
-                                    text = Integer.toString(response.getStatusLine().getStatusCode());
-                                }
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                                caller.authorize(u, (DefaultHttpClient) client);
+                                isLoggined[0] = true;
+                            } else if (response.getStatusLine().getStatusCode() == 401) {
+                                text = "Учетная запись еще не активирована";
                             }
                             final String textToView = text;
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-
-                                    Log.d("login", textToView);
+                                    if (textToView != null) {
+                                        Toast.makeText(getApplicationContext(), textToView, Toast.LENGTH_LONG).show();
+                                    }
                                 }
                             });
                         }
