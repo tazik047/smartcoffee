@@ -17,7 +17,14 @@ namespace SmartCoffeeMachine
             {
                 httpClient.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(WebConfigurationManager.AppSettings["appKey"]);
                 var url = WebConfigurationManager.AppSettings["url"];
-                var res = await httpClient.GetStringAsync(string.Format(url, userId));
+                try
+                {
+                    var res = await httpClient.GetStringAsync(string.Format(url, userId));
+                }
+                catch (Exception e)
+                {
+                    var t = e;
+                }
             }
         }
     }

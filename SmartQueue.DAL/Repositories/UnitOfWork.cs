@@ -21,7 +21,7 @@ namespace SmartQueue.DAL.Repositories
 
         private ICoffeePreferencesRepository _coffeePreferencesRepository;
 
-        private IQueueItemRepository _queueItemRepository;
+        private IOrderRepository _orderRepository;
 
         public UnitOfWork()
         {
@@ -57,9 +57,9 @@ namespace SmartQueue.DAL.Repositories
             }
         }
 
-        public IQueueItemRepository QueueItemRepository
+        public IOrderRepository OrderRepository
         {
-            get { return _queueItemRepository ?? (_queueItemRepository = new QueueItemRepository(_db)); }
+            get { return _orderRepository ?? (_orderRepository = new OrderRepository(_db)); }
         }
 
         public void Save()

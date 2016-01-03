@@ -8,10 +8,15 @@ using SmartQueue.Model.Repositories;
 
 namespace SmartQueue.DAL.Repositories
 {
-    class QueueItemRepository : Repository<QueueItem>, IQueueItemRepository
+    class OrderRepository : Repository<Order>, IOrderRepository
     {
-        public QueueItemRepository(EfDbContext context) : base(context)
+        public OrderRepository(EfDbContext context) : base(context)
         {
+        }
+
+        public Order GetByUserId(long id)
+        {
+            return DbSet.FirstOrDefault(o => o.UserId == id);
         }
     }
 }

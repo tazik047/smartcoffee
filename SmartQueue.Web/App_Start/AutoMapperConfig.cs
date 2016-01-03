@@ -78,6 +78,7 @@ namespace SmartQueue.Web.App_Start
             Mapper.CreateMap<ManageUserViewModel, User>()
                 .ForMember(u => u.Id, m => m.Ignore());
             Mapper.CreateMap<RegisterUserViewModel, User>();
+            Mapper.CreateMap<User, UserQueueViewModel>();
 
         }
     }

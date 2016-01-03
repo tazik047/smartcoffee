@@ -54,7 +54,7 @@
     <Compile Include="Repositories\ICoffeeMachineRepository.cs" />
     <Compile Include="Repositories\ICoffeePreferencesRepository.cs" />
     <Compile Include="Repositories\ICompanyRepository.cs" />
-    <Compile Include="Repositories\IQueueItemRepository.cs" />
+    <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRoleRepository.cs" />
     <Compile Include="Repositories\IUnitOfWork.cs" />

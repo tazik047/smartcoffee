@@ -1,8 +1,65 @@
-﻿
+﻿@using SmartQueue.Authorization.Infrastructure
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Wait</h2>
+<h2>Ждите своей очереди</h2>
 
+<div id="time"></div>
 
+<div id="queue"></div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var users = [];
+
+            var interval = setInterval(function() {
+                $.ajax({
+                    url: '/api/queue',
+                    dataTyoe: "json",
+                    success: function (data) {
+                        $('#time').html(data.timeToEnd);
+                        var currentId = @User.Identity.GetUser().Id;
+                        if (!Equals(users, data.users)) {
+                            users = data.users;
+                            var resHtml = '';
+                            for (var i = 0; i < users.length; i++) {
+                                resHtml +='<li class="'+(users[i].id==currentId?'current':'')+'">'+ users[i].surname + ' '+ users[i].name +' '+(users[i].id==currentId?'<b>(Вы)</b>':'')+'</li>';
+                            }
+                            $('#queue').html('<ol>' + resHtml + '</ol>');
+                        }
+                        console.log(data);
+                    },
+                    error: function (data) {
+                        console.log(data);
+                        clearInterval(interval);
+                        swal({
+                            title: "Ваш кофе готов!",
+                            text: "", 
+                            type: "success", 
+                            showCancelButton: false,
+                            closeOnConfirm: false
+                        }, function() {
+                            location.reload();
+                        });
+                        
+                    }
+                });
+            }, 1000);
+        });
+
+        function Equals(arr1, arr2) {
+            if (arr1.length != arr2.length) {
+                return false;
+            }
+            for (var i = 0; i < arr1.length; i++) {
+                if (arr1[i].Id != arr2[i].Id) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+}

@@ -7,7 +7,8 @@ using SmartQueue.Model.Entities;
 
 namespace SmartQueue.Model.Repositories
 {
-    public interface IQueueItemRepository : IRepository<QueueItem>
+    public interface IOrderRepository : IRepository<Order>
     {
+        Order GetByUserId(long id);
     }
 }

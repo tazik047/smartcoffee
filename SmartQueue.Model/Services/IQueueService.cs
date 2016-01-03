@@ -13,9 +13,9 @@ namespace SmartQueue.Model.Services
 
         void RemoveFromQueue(long userId);
 
-        IEnumerable<User> GetAllFromQueue(long coffeeMachineId);
+        IEnumerable<User> GetAllFromQueue(long userId);
 
-        TimeSpan TimeLeft(long coffeeMachineId);
+        TimeSpan TimeLeft(long userId);
 
         bool IsWait(long userId);
 

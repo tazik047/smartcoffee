@@ -18,9 +18,9 @@ namespace SmartQueue.Web.ApiControllers
             _smartQueueServices = smartQueueServices;
         }
 
-        IHttpActionResult Get(long id)
+        public IHttpActionResult Get(long id)
         {
-            if (Request.Headers.Authorization.Parameter != WebConfigurationManager.AppSettings["appKey"])
+            if (Request.Headers.Authorization==null || Request.Headers.Authorization.Scheme != WebConfigurationManager.AppSettings["appKey"])
             {
                 return Unauthorized();
             }

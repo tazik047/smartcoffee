@@ -18,7 +18,6 @@ namespace SmartQueue.DAL
             {
                 new Role {Name = "Administrator"},
                 new Role {Name = "Director"},
-                new Role {Name = "ServiceStaff"},
                 new Role {Name = "User"},
             };
             foreach (var role in roles)
@@ -32,8 +31,11 @@ namespace SmartQueue.DAL
             {
                 Login = "EpamLogin",
                 Password = password,
+                Surname = "Директор",
+                Name = "Директор",
                 Email = "director@epam.com",
-                Roles = new List<Role> {roles[1]}
+                Roles = new List<Role> {roles[1]},
+                IsActive = true
             };
 
             context.Users.Add(director);
@@ -44,15 +46,27 @@ namespace SmartQueue.DAL
 
             var users = new[]
             {
-                new User {Login = "Admin", Email = "admin@email.com", Password = password, Roles = new List<Role> {roles[0]}, IsActive = true, ContentType = "iamge/gif"},
-                new User {Login = "ServiceStaff", Email = "service@email.com", Password = password, Roles = new List<Role> {roles[2]}, Company = epam},
-                new User {Login = "Stas", Email = "user@email.com", Password = password, Roles = new List<Role> {roles[3]}, ContentType = "image/jpg", Company = epam},
-                new User {Login = "Masha", Email = "user1@email.com", Password = password, Roles = new List<Role> {roles[3]}, Company = epam},
+                new User {Login = "Admin", Email = "admin@email.com", Password = password, Roles = new List<Role> {roles[0]}, IsActive = true, ContentType = "iamge/gif", Name = "Admin", Surname = "Admin"},
+                new User {Login = "Stas", Email = "user@email.com", Password = password, Roles = new List<Role> {roles[2]}, ContentType = "image/jpg", Company = epam, Name = "Stas", Surname = "Stas", IsActive = true},
+                new User {Login = "Masha", Email = "user1@email.com", Password = password, Roles = new List<Role> {roles[2]}, Company = epam, Name = "Masha", Surname = "Masha"},
             };
             foreach (var user in users)
             {
                 context.Users.Add(user);
             }
+
+            var coffeeMachine = new CoffeeMachine
+            {
+                Address = "127.0.0.1:7878",
+                Company = epam,
+                Name = "Coffee",
+                Position = "1 floor",
+                ServiceStaff = new List<User> {director},
+            };
+
+            context.CoffeeMachines.Add(coffeeMachine);
+
+            context.SaveChanges();
 
             base.Seed(context);
         }

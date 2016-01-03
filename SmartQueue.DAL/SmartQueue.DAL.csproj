@@ -52,7 +52,7 @@
     <Compile Include="Repositories\CoffeeMachineRepository.cs" />
     <Compile Include="Repositories\CoffeePreferencesRepository.cs" />
     <Compile Include="Repositories\CompanyRepository.cs" />
-    <Compile Include="Repositories\QueueItemRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />

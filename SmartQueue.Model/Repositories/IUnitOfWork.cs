@@ -18,7 +18,7 @@ namespace SmartQueue.Model.Repositories
 
         ICoffeePreferencesRepository CoffeePreferencesRepository { get; }
 
-        IQueueItemRepository QueueItemRepository { get; }
+        IOrderRepository OrderRepository { get; }
 
         void Save();
     }

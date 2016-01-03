@@ -148,6 +148,7 @@
   <ItemGroup>
     <Compile Include="ApiControllers\AccountController.cs" />
     <Compile Include="ApiControllers\CoffeeReadyController.cs" />
+    <Compile Include="ApiControllers\QueueController.cs" />
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -174,9 +175,11 @@
     <Compile Include="Models\ManageUserViewModel.cs" />
     <Compile Include="Models\NotActiveCompanyViewModel.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\QueueViewModel.cs" />
     <Compile Include="Models\RegisterCompanyViewModel.cs" />
     <Compile Include="Models\RegisterUserViewModel.cs" />
     <Compile Include="Models\SizeViewModel.cs" />
+    <Compile Include="Models\UserQueueViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
