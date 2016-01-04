@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,11 +28,13 @@ import com.smartqueue.zadorozhnii.stanislav.smartqueue.logic.PostExecuteWorker;
 import com.smartqueue.zadorozhnii.stanislav.smartqueue.logic.RequestType;
 import com.smartqueue.zadorozhnii.stanislav.smartqueue.model.CoffeeMachine;
 import com.smartqueue.zadorozhnii.stanislav.smartqueue.model.Order;
+import com.smartqueue.zadorozhnii.stanislav.smartqueue.model.QueueItem;
 import com.smartqueue.zadorozhnii.stanislav.smartqueue.model.SelectListItem;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.util.EntityUtils;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -51,9 +55,13 @@ public class Queue extends Fragment {
     private EditText sugar;
     private Spinner coffeeMachine;
 
+    private TextView timeToEnd;
+    private LinearLayout queueList;
+
     private LoadPreferencesTask loadTask;
     private AddToQueueTask saveTask;
     private IsUserInQueueTask isInQueue;
+    private GetFromQueueTask fromQueue;
 
     private int main_layout;
 
@@ -73,10 +81,25 @@ public class Queue extends Fragment {
         }
     }
 
+    @Override
+    public void onDetach() {
+        if(!fromQueue.isCancelled()){
+            fromQueue.cancel(true);
+        }
+    }
+
     private View startQueue(LayoutInflater inflater){
         View view = inflater.inflate(R.layout.fragment_queue, null);
+        mProgressView = view.findViewById(R.id.login_progress);
+        mMainFormView = view.findViewById(R.id.main_layout);
         isInQueue = new IsUserInQueueTask();
         isInQueue.execute((Void) null);
+
+        timeToEnd = (TextView)view.findViewById(R.id.timeToEnd);
+        queueList = (LinearLayout)view.findViewById(R.id.queueList);
+
+        fromQueue = new GetFromQueueTask();
+        fromQueue.execute((Void) null);
         return view;
     }
 
@@ -340,7 +363,7 @@ public class Queue extends Fragment {
             preferences[0].coffeeMachineId = getValueFromSpinner(coffeeMachine);
             preferences[0].sugar = sugarText;
 
-            ApiCaller caller = new ApiCaller("api/preferences", RequestType.Post,
+            ApiCaller caller = new ApiCaller("api/queue", RequestType.Post,
                     new PostExecuteWorker() {
                         @Override
                         public void execute(final ApiCaller caller, final HttpClient client, final HttpResponse response) {
@@ -354,14 +377,15 @@ public class Queue extends Fragment {
 
         @Override
         protected void onPostExecute(final Boolean success) {
-            loadTask = null;
+            saveTask = null;
             showProgress(false);
-            Toast.makeText(MyApplication.getContext(), "Данные успешно сохранены", Toast.LENGTH_LONG).show();
+            Toast.makeText(MyApplication.getContext(), "Заказ принят", Toast.LENGTH_LONG).show();
+            reload(R.layout.fragment_queue);
         }
 
         @Override
         protected void onCancelled() {
-            loadTask = null;
+            saveTask = null;
             showProgress(false);
         }
     }
@@ -408,6 +432,70 @@ public class Queue extends Fragment {
         protected void onCancelled() {
             isInQueue = null;
             showProgress(false);
+        }
+    }
+
+    public class GetFromQueueTask extends AsyncTask<Void, Void, Boolean> {
+
+        private QueueItem previous;
+        final boolean result[] = new boolean[1];
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+
+
+
+            while (!result[0]) {
+                ApiCaller caller = new ApiCaller("api/queue", RequestType.Get,
+                    new PostExecuteWorker() {
+                        @Override
+                        public void execute(final ApiCaller caller, final HttpClient client, final HttpResponse response) {
+                            if (response.getStatusLine().getStatusCode() == 404) {
+                                result[0] = true;
+                            } else {
+                                Gson g = new Gson();
+                                Type t = new TypeToken<QueueItem>() {
+                                }.getType();
+                                QueueItem temp = null;
+                                try {
+                                    temp = g.fromJson(EntityUtils.toString(response.getEntity()), t);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                final QueueItem item = temp;
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        timeToEnd.setText(item.timeToEnd);
+                                        if(!item.equals(previous)) {
+                                            item.GenerateList(queueList);
+                                            previous = item;
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+                caller.execute();
+                try {
+                    Thread.sleep(1000, 0);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            fromQueue = null;
+            reload(R.layout.fragment_add_to_queue);
+        }
+
+        @Override
+        protected void onCancelled() {
+            fromQueue = null;
+            result[0] = true;
         }
     }
 }

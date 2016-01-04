@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
 using SmartQueue.Authorization.Infrastructure;
+using SmartQueue.Model.Entities;
 using SmartQueue.Model.Services;
 using SmartQueue.Web.Models;
 
@@ -34,6 +35,18 @@ namespace SmartQueue.Web.ApiControllers
                 Users = Mapper.Map<IEnumerable<UserQueueViewModel>>(users)
             };
             return Ok(result);
+        }
+
+        public IHttpActionResult Post(OrderViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var order = Mapper.Map<Order>(model);
+                order.UserId = User.Identity.GetUser().Id;
+                _smartQueueServices.QueueService.AddToQueue(order);
+                return Ok();
+            }
+            return BadRequest(ModelState);
         }
     }
 }
