@@ -53,9 +53,9 @@ public class ApiCaller {
     private static String cookie;
     private static DataBaseHelper _db;
     private static String COOKIE_NAME = ".ASPXAUTH";
-    //public static String DOMAIN = "10.23.13.137";
+    public static String DOMAIN = "10.23.13.137";
     //public static String DOMAIN = "192.168.43.147";
-    public static String DOMAIN = "192.168.0.147";
+    //public static String DOMAIN = "192.168.0.147";
 
     private String getCookie(){
         if(cookie==null){

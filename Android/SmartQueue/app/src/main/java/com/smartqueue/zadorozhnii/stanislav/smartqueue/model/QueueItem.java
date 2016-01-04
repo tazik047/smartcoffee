@@ -23,6 +23,7 @@ public class QueueItem {
         int ind = 1;
         for (UserQueue i : users ) {
             TextView text = new TextView(MyApplication.getContext());
+            text.setTextSize(20);
             text.setText(String.format("%d. %s %s %s", ind++, i.surname, i.name, i.id.equals(currentId)?"(Вы)":""));
             layout.addView(text);
         }
