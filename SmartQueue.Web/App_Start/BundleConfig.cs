@@ -23,7 +23,8 @@ namespace SmartQueue.Web
                     "~/Scripts/jquery.nicescroll.js").Include(
                     "~/Scripts/jquery.sparkline.js").Include(
                     "~/Scripts/common-scripts.js",
-                    "~/Scripts/sweetalert.min.js"));
+                    "~/Scripts/sweetalert.min.js").Include(
+                    "~/Scripts/jquery.attachFooter.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

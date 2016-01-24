@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.site-footer {
+    z-index: -1;
+}
