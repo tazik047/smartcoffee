@@ -23,6 +23,27 @@ textarea {
     max-width: 280px;
 }
 
+.time-wrap {
+    font-size: 20px;
+    text-align: center;
+}
+#time {
+    display: inline-block;
+    color: red;
+    font-style: italic;
+}
+
+#queue ol li {
+    padding: 10px;
+    background: white;
+    margin-bottom: 10px;
+}
+
+#queue ol li.current {
+    font-style: italic;
+    font-size: 20px;
+}
+
 .site-footer {
     z-index: -1;
 }

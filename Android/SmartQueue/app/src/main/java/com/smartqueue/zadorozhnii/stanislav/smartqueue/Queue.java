@@ -81,13 +81,6 @@ public class Queue extends Fragment {
         }
     }
 
-    @Override
-    public void onDetach() {
-        if(!fromQueue.isCancelled()){
-            fromQueue.cancel(true);
-        }
-    }
-
     private View startQueue(LayoutInflater inflater){
         View view = inflater.inflate(R.layout.fragment_queue, null);
         mProgressView = view.findViewById(R.id.login_progress);

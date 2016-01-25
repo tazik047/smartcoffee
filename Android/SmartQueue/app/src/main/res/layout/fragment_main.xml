@@ -1,0 +1,43 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.smartqueue.zadorozhnii.stanislav.smartqueue.Queue">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:weightSum="1"
+        android:padding="20dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Добро пожаловать в SmartQueue!"
+            android:id="@+id/textView8"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Привет! С помощью этого сервисы ты сможешь заказать напиток в своему офисе не вставай со своего рабочего места!"
+            android:id="@+id/textView10"
+            android:singleLine="false"
+            android:linksClickable="false"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Занимайте очередь парой кликов, не уходя со своего места"
+            android:id="@+id/textView11"
+            android:layout_marginTop="15dp" />
+    </LinearLayout>
+</FrameLayout>

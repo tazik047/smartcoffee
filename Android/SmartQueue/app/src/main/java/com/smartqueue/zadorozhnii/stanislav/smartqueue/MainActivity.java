@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
                             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                             switch (((Nameable) drawerItem).getNameRes()) {
                                 case R.string.drawer_item_home:
-                                    Toast.makeText(MainActivity.this, "My click", Toast.LENGTH_SHORT).show();
+                                    Main main = new Main();
+                                    fragmentTransaction.replace(R.id.fragmLayout, main);
                                     break;
                                 case R.string.drawer_item_queue:
                                     Queue queue = new Queue(R.layout.fragment_add_to_queue);
@@ -95,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                             fragmentTransaction.addToBackStack(null);
                             fragmentTransaction.commit();
-                            //Toast.makeText(MainActivity.this, MainActivity.this.getString(((Nameable) drawerItem).getNameRes()), Toast.LENGTH_SHORT).show();
                         }
                     }
                 })
@@ -111,6 +111,11 @@ public class MainActivity extends AppCompatActivity {
                 .into(img);
         TextView profile = (TextView)findViewById(R.id.profileName);
         profile.setText(user.email);
+
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        Main main = new Main();
+        fragmentTransaction.replace(R.id.fragmLayout, main);
+        fragmentTransaction.commit();
     }
 
     @Override
