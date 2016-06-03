@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="421a621d-3699-4b20-97ac-552b6ad5848f" name="UMLUseCaseDiagram1" linkedPackageId="5007d316-dbe4-4a1b-90b9-bbc477457a33" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="6bc5e734-c980-492e-90f7-9bd6a021ca2f" name="Директор" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="475a8c95-c73e-49dc-8de9-f353314ae4c6" />
+        <generalsInternal>
+          <generalization Id="5cf73713-de40-4f54-a10e-9c822a6785f8" isSubstitutable="false">
+            <actorMoniker Id="b0b6a699-dcf1-4bc9-abd8-eb013d69cf7e" LastKnownName="Користувач" />
+            <elementDefinition Id="fcf08ff9-f625-43c8-9cf2-fff4cbec6297" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="5ec1d728-3201-440e-9aad-7ff9fb14fbe8" isDerived="false" sourceEndRoleName="Директор" targetEndRoleName="Управлять кофеваркой" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="fe0dfdc0-ff6d-4ca6-88b1-bcc5add26656" LastKnownName="Керувати напоями" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c2f216e4-11bd-40d2-b18d-87734d882171" name="Директор" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e021229b-a8c0-44fb-b654-a627dbaa5750" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bf528287-3e88-47ca-aa43-5357c6bda680" name="Управлять кофеваркой" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a8405a6a-9df6-4755-a30a-1d592690baad" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3048211a-4534-46aa-ae92-72979c963ef6" />
+          </association>
+          <association Id="2c737dab-351f-488a-8d4c-17fa66b08c37" isDerived="false" sourceEndRoleName="Директор" targetEndRoleName="Управління співробітниками" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="df304fe6-92cd-4792-a431-1155fb0b7cc1" LastKnownName="Управління співробітниками" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2765ee5d-2a95-4c81-9f24-c21c100fbe95" name="Директор" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="37123e8e-cffe-41f5-8812-a1f4bc112c17" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="36e79117-9891-4678-b1e2-14862188de17" name="Управління співробітниками" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="87def665-bf2b-4afa-84fa-d2bc3e0b1919" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="09c3f5ab-485b-4fa4-adf9-deab4ef14a98" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="4ab07d77-f7c3-47d4-a58a-1c9403c462d7" name="Адміністратор" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="283f0ea7-1674-444f-89f2-4c24db4bbfa2" />
+        <generalsInternal>
+          <generalization Id="a4a32b97-1ec1-42b8-a25e-852b886ba7af" isSubstitutable="false">
+            <actorMoniker Id="b0b6a699-dcf1-4bc9-abd8-eb013d69cf7e" LastKnownName="Користувач" />
+            <elementDefinition Id="14888b8e-9e33-47c8-a1fa-b9ff79990e98" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="a44fe5da-01e7-4e5d-813c-a94ce1fabbab" isDerived="false" sourceEndRoleName="Адміністратор" targetEndRoleName="Редагування кавоварок" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8296f43a-46df-47f9-a8d3-cd0971df268d" LastKnownName="Управління кавовароками" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ea2e2021-c19b-4170-a5e1-654746cd8486" name="Адміністратор" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="896aad29-f934-4e8a-9613-3ff2c98ef584" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b24fbcc8-7382-4fd7-b686-47ff3c4746d7" name="Редагування кавоварок" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e32bbbfc-68f9-418c-a6ff-e9c1291db7ff" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="bc56f947-f2fd-48b5-871c-ff939cd91fc6" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="b0b6a699-dcf1-4bc9-abd8-eb013d69cf7e" name="Користувач" isAbstract="true" isLeaf="false">
+        <elementDefinition Id="1aa4f4fb-efeb-4451-b2d4-d14ce5e08977" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6f24c354-0add-4ded-bb9c-28e7c28e89c5" name="Авторизація" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="dbbd2f3f-a89c-4dad-9937-6163f12e2762" />
+        <additions>
+          <include Id="67df9092-1bd2-4cec-827e-ae661aebf82b">
+            <useCaseMoniker Id="fe0dfdc0-ff6d-4ca6-88b1-bcc5add26656" LastKnownName="Керувати напоями" />
+            <elementDefinition Id="6b9e1531-c218-49a1-a355-706649a0bd01" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fe0dfdc0-ff6d-4ca6-88b1-bcc5add26656" name="Керувати напоями" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f9f88555-137d-432b-92ed-1dd5a0a053b5" />
+        <extendedCases>
+          <extend Id="f87bc20f-7a2b-4eca-a1ff-55a0a5099f5b">
+            <useCaseMoniker Id="986988c4-cd72-47f8-8645-6f1d35ef5fb5" LastKnownName="Ставити напой в чергу" />
+            <elementDefinition Id="c9ed1502-1d7a-4eb8-b1c0-e4edd12a1c4b" />
+          </extend>
+          <extend Id="a41b1b30-621c-4ef0-8577-50071554cb93">
+            <useCaseMoniker Id="183f1179-995a-4c3d-8177-e672c7ea1729" LastKnownName="Виставляти вподобання" />
+            <elementDefinition Id="01754c93-5d45-4377-b4a3-baf6fa9392ee" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="1bd45036-ba4f-44e0-9411-09f80c6e8f5a" name="Співробітник" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bee0884f-d01d-4c17-9a3c-a08186257e4f" />
+        <generalsInternal>
+          <generalization Id="d00de2d6-4197-418c-b825-738684f67431" isSubstitutable="false">
+            <actorMoniker Id="b0b6a699-dcf1-4bc9-abd8-eb013d69cf7e" LastKnownName="Користувач" />
+            <elementDefinition Id="9f1e0167-2b49-46f3-b433-79b7156da7e9" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="fb570816-921a-4108-b461-63d531dbda7c" isDerived="false" sourceEndRoleName="Співробітник" targetEndRoleName="Управлять кофеваркой" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="fe0dfdc0-ff6d-4ca6-88b1-bcc5add26656" LastKnownName="Керувати напоями" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c2e1d5ee-4aac-4c8e-9154-52dd1faf4654" name="Співробітник" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="15f5e348-1aaf-4015-911b-c542a24f6f2c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fc02dd6a-64de-45d0-b163-0f4c551c40b1" name="Управлять кофеваркой" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d900b6bb-ba11-4dd8-a3d1-71d9d84a53c2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8ef64ff3-de0f-4ec1-85d7-8dd6cc8467b3" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="183f1179-995a-4c3d-8177-e672c7ea1729" name="Виставляти вподобання" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f1d10fb1-d006-4ecc-ae05-83a0277d7983" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="986988c4-cd72-47f8-8645-6f1d35ef5fb5" name="Ставити напой в чергу" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c591197c-5ec3-41a3-82be-d417e40dedd2" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8296f43a-46df-47f9-a8d3-cd0971df268d" name="Управління кавовароками" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="46bc54a8-9983-426b-a17e-e51d14c26582" />
+        <extendedCases>
+          <extend Id="ef0a4a2e-a490-4680-9beb-35b513a7c955">
+            <useCaseMoniker Id="4a6ac00a-1658-4387-8e36-93f992272438" LastKnownName="Створення нових" />
+            <elementDefinition Id="77c9f17e-2193-4da1-80d4-4987c105a5d5" />
+          </extend>
+          <extend Id="a19a4e86-a02a-477a-a6ec-1133777a8e4a">
+            <useCaseMoniker Id="6a19ecff-70f5-4672-bf21-bf5c1cf8bbbc" LastKnownName="Редагування" />
+            <elementDefinition Id="dcb98cb1-88f6-4f2a-a640-e4ee6b7eb737" />
+          </extend>
+          <extend Id="4f52ecc7-9e43-4c41-b8a5-24617fe0ecb0">
+            <useCaseMoniker Id="e779e50c-763a-4e47-bf9d-aeaba27420aa" LastKnownName="Видалення" />
+            <elementDefinition Id="2f9b9d2f-6576-41f0-8f56-3d1dfa3a948a" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4a6ac00a-1658-4387-8e36-93f992272438" name="Створення нових" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2495f7c9-434b-4222-90ba-625b1ef4399d" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6a19ecff-70f5-4672-bf21-bf5c1cf8bbbc" name="Редагування" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="89a5be6c-7895-4b74-8862-8b0aad321c01" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e779e50c-763a-4e47-bf9d-aeaba27420aa" name="Видалення" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d1fefb0e-c2bc-4efa-bf99-98744b85ad8f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="df304fe6-92cd-4792-a431-1155fb0b7cc1" name="Управління співробітниками" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2f0402e3-2553-448d-8192-3128925d5053" />
+        <extendedCases>
+          <extend Id="e4ad2e0b-d93e-44ce-8d2e-a7b85e9ae077">
+            <useCaseMoniker Id="6d2a443a-9d43-46b4-a0cf-ce2165de7e6d" LastKnownName="Активування" />
+            <elementDefinition Id="45984fef-b0a3-456a-a723-0657eaa52b29" />
+          </extend>
+          <extend Id="738a9819-7fb6-47de-95eb-b513dde5ed6c">
+            <useCaseMoniker Id="bd3c05c7-ed31-4957-a3ac-35ef6d9852b6" LastKnownName="Створення" />
+            <elementDefinition Id="87ffce55-9dba-4a76-9d0e-2ec1a51876a6" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6d2a443a-9d43-46b4-a0cf-ce2165de7e6d" name="Активування" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bd93ac48-6474-4545-9606-34e2cb47796e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bd3c05c7-ed31-4957-a3ac-35ef6d9852b6" name="Створення" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b93974a8-32a5-4ff6-81e5-e73c141b24e1" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="5007d316-dbe4-4a1b-90b9-bbc477457a33" name="ModelingProject1">
+    <elementDefinition Id="f2f0b314-b5a9-44de-97c8-76cd2a2c0e5e" />
+    <profileInstances>
+      <packageHasProfileInstances Id="aaad57e1-2f25-4c22-ad50-a653016a0245">
+        <profileInstance Id="ec94d240-b475-404d-a337-66a13fa27a74" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="7d139910-5540-4bc7-9501-fcfafd880c78">
+        <profileInstance Id="2739b8ac-b868-4cc7-a7af-edc0f9e19205" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

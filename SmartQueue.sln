@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartQueue.Authorization", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartQueue.Utils", "SmartQueue.Utils\SmartQueue.Utils.csproj", "{9FE85937-4E5E-45CB-801B-21CA25E85DCF}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject1", "ModelingProject1\ModelingProject1.modelproj", "{8D30C775-67F2-42C0-BE23-903D057610CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{9FE85937-4E5E-45CB-801B-21CA25E85DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FE85937-4E5E-45CB-801B-21CA25E85DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FE85937-4E5E-45CB-801B-21CA25E85DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D30C775-67F2-42C0-BE23-903D057610CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D30C775-67F2-42C0-BE23-903D057610CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D30C775-67F2-42C0-BE23-903D057610CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D30C775-67F2-42C0-BE23-903D057610CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

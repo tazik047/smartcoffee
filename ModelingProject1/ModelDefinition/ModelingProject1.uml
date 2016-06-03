@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="f2f0b314-b5a9-44de-97c8-76cd2a2c0e5e"
+  name="ModelingProject1" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="1aa4f4fb-efeb-4451-b2d4-d14ce5e08977"
+        name="Користувач"
+        isAbstract="true"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="475a8c95-c73e-49dc-8de9-f353314ae4c6"
+        name="Директор"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="fcf08ff9-f625-43c8-9cf2-fff4cbec6297"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="1aa4f4fb-efeb-4451-b2d4-d14ce5e08977"
+              LastKnownName="Користувач"
+              LastKnownLocation="ModelingProject1.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="3048211a-4534-46aa-ae92-72979c963ef6"
+            isDerived="false"
+            sourceEndRoleName="Директор"
+            targetEndRoleName="Управлять кофеваркой"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f9f88555-137d-432b-92ed-1dd5a0a053b5"
+              LastKnownName="Керувати напоями"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e021229b-a8c0-44fb-b654-a627dbaa5750"
+                  name="Директор"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a8405a6a-9df6-4755-a30a-1d592690baad"
+                  name="Управлять кофеваркой"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="09c3f5ab-485b-4fa4-adf9-deab4ef14a98"
+            isDerived="false"
+            sourceEndRoleName="Директор"
+            targetEndRoleName="Управління співробітниками"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="2f0402e3-2553-448d-8192-3128925d5053"
+              LastKnownName="Управління співробітниками"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="37123e8e-cffe-41f5-8812-a1f4bc112c17"
+                  name="Директор"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="87def665-bf2b-4afa-84fa-d2bc3e0b1919"
+                  name="Управління співробітниками"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="283f0ea7-1674-444f-89f2-4c24db4bbfa2"
+        name="Адміністратор"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="14888b8e-9e33-47c8-a1fa-b9ff79990e98"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="1aa4f4fb-efeb-4451-b2d4-d14ce5e08977"
+              LastKnownName="Користувач"
+              LastKnownLocation="ModelingProject1.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="bc56f947-f2fd-48b5-871c-ff939cd91fc6"
+            isDerived="false"
+            sourceEndRoleName="Адміністратор"
+            targetEndRoleName="Редагування кавоварок"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="46bc54a8-9983-426b-a17e-e51d14c26582"
+              LastKnownName="Управління кавовароками"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="896aad29-f934-4e8a-9613-3ff2c98ef584"
+                  name="Адміністратор"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e32bbbfc-68f9-418c-a6ff-e9c1291db7ff"
+                  name="Редагування кавоварок"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="dbbd2f3f-a89c-4dad-9937-6163f12e2762"
+        name="Авторизація"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="6b9e1531-c218-49a1-a355-706649a0bd01">
+            <useCaseMoniker
+              Id="f9f88555-137d-432b-92ed-1dd5a0a053b5"
+              LastKnownName="Керувати напоями"
+              LastKnownLocation="ModelingProject1.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f9f88555-137d-432b-92ed-1dd5a0a053b5"
+        name="Керувати напоями"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="c9ed1502-1d7a-4eb8-b1c0-e4edd12a1c4b">
+            <useCaseMoniker
+              Id="c591197c-5ec3-41a3-82be-d417e40dedd2"
+              LastKnownName="Ставити напой в чергу"
+              LastKnownLocation="ModelingProject1.uml" />
+          </extend>
+          <extend
+            Id="01754c93-5d45-4377-b4a3-baf6fa9392ee">
+            <useCaseMoniker
+              Id="f1d10fb1-d006-4ecc-ae05-83a0277d7983"
+              LastKnownName="Виставляти вподобання"
+              LastKnownLocation="ModelingProject1.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="bee0884f-d01d-4c17-9a3c-a08186257e4f"
+        name="Співробітник"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="9f1e0167-2b49-46f3-b433-79b7156da7e9"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="1aa4f4fb-efeb-4451-b2d4-d14ce5e08977"
+              LastKnownName="Користувач"
+              LastKnownLocation="ModelingProject1.uml" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association
+            Id="8ef64ff3-de0f-4ec1-85d7-8dd6cc8467b3"
+            isDerived="false"
+            sourceEndRoleName="Співробітник"
+            targetEndRoleName="Управлять кофеваркой"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f9f88555-137d-432b-92ed-1dd5a0a053b5"
+              LastKnownName="Керувати напоями"
+              LastKnownLocation="ModelingProject1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="15f5e348-1aaf-4015-911b-c542a24f6f2c"
+                  name="Співробітник"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d900b6bb-ba11-4dd8-a3d1-71d9d84a53c2"
+                  name="Управлять кофеваркой"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f1d10fb1-d006-4ecc-ae05-83a0277d7983"
+        name="Виставляти вподобання"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c591197c-5ec3-41a3-82be-d417e40dedd2"
+        name="Ставити напой в чергу"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="46bc54a8-9983-426b-a17e-e51d14c26582"
+        name="Управління кавовароками"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="77c9f17e-2193-4da1-80d4-4987c105a5d5">
+            <useCaseMoniker
+              Id="2495f7c9-434b-4222-90ba-625b1ef4399d"
+              LastKnownName="Створення нових"
+              LastKnownLocation="ModelingProject1.uml" />
+          </extend>
+          <extend
+            Id="dcb98cb1-88f6-4f2a-a640-e4ee6b7eb737">
+            <useCaseMoniker
+              Id="89a5be6c-7895-4b74-8862-8b0aad321c01"
+              LastKnownName="Редагування"
+              LastKnownLocation="ModelingProject1.uml" />
+          </extend>
+          <extend
+            Id="2f9b9d2f-6576-41f0-8f56-3d1dfa3a948a">
+            <useCaseMoniker
+              Id="d1fefb0e-c2bc-4efa-bf99-98744b85ad8f"
+              LastKnownName="Видалення"
+              LastKnownLocation="ModelingProject1.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2495f7c9-434b-4222-90ba-625b1ef4399d"
+        name="Створення нових"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="89a5be6c-7895-4b74-8862-8b0aad321c01"
+        name="Редагування"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d1fefb0e-c2bc-4efa-bf99-98744b85ad8f"
+        name="Видалення"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2f0402e3-2553-448d-8192-3128925d5053"
+        name="Управління співробітниками"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="45984fef-b0a3-456a-a723-0657eaa52b29">
+            <useCaseMoniker
+              Id="bd93ac48-6474-4545-9606-34e2cb47796e"
+              LastKnownName="Активування"
+              LastKnownLocation="ModelingProject1.uml" />
+          </extend>
+          <extend
+            Id="87ffce55-9dba-4a76-9d0e-2ec1a51876a6">
+            <useCaseMoniker
+              Id="b93974a8-32a5-4ff6-81e5-e73c141b24e1"
+              LastKnownName="Створення"
+              LastKnownLocation="ModelingProject1.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="bd93ac48-6474-4545-9606-34e2cb47796e"
+        name="Активування"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b93974a8-32a5-4ff6-81e5-e73c141b24e1"
+        name="Створення"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
